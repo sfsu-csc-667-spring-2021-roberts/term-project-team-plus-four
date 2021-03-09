@@ -1,0 +1,4 @@
+Mac: "start:dev": “NODE_ENV=development DEBUG=APP_NAME:* nodemon ./bin/www"
+
+Windows: "start:dev": "SET \"NODE_ENV=development\" SET DEBUG=myapp:* & nodemon ./bin/www"
+
