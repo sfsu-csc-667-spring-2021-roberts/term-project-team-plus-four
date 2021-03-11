@@ -4,7 +4,11 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "start:dev": "SET \"NODE_ENV=development\" SET DEBUG=myapp:* & nodemon ./bin/www"
+    "start:dev": "NODE_ENV=development DEBUG=APP_NAME:* nodemon ./bin/www",
+    "db:create:migration": "npx sequelize migration:generate --name",
+    "db:migrate": "npx sequelize db:migrate",
+    "db:rollback": "npx sequelize db:migrate:undo",
+    "postinstall": "npx sequelize db:migrate"
   },
   "dependencies": {
     "async": "^3.2.0",
@@ -18,6 +22,8 @@
     "morgan": "~1.9.1",
     "pg-promise": "^10.9.4",
     "pug": "^3.0.2",
+    "sequelize": "^6.5.0",
+    "sequelize-cli": "^6.2.0",
     "validator": "^13.5.2"
   },
   "devDependencies": {
