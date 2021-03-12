@@ -1,5 +1,7 @@
-const pgp = require("pg-promise")();
 // self-signed certificate connection
-const connection = pgp((process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0));
+process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
+
+const pgp = require("pg-promise")();
+const connection = pgp(process.env.DATABASE_URL);
 
 module.exports = connection;
