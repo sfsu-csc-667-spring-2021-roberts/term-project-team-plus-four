@@ -1,19 +1,43 @@
 extends auth-layout 
 
 //- TODO: Add need inputs within the div for signup
-block right-auth    
-    .right-auth
+block auth-right    
+    .auth-right
         h1 Classic Uno! 
-        form
-            label.form-label Create An Account
-            input.form-control(type="text" placeholder="First Name" name="firstname" required)
-            input.form-control(type="text" placeholder="Last Name" name="lastname" required)
-            input.form-control(type="text" placeholder="Email" name="email" required)
-            input.form-control(type="password" placeholder="Password" name="password" required)
-            input.form-control(type="password" placeholder="Confirm Password" name="confPassword" required)
-            input.form-check-label(type="checkbox" name="policy" required)
-            label.form-label I Agree to the  Privacy Policy, Terms & Conditions
-            button.btn.btn-primary(type="submit") Submit
+        form.needs-validation.auth-form.mx-auto
+            h4 Create An Account
+            //- First And Last Name
+            .row.mb-4
+                .col
+                    .form-floating
+                        input.form-control(type="text" placeholder="First Name" name="firstname" required)
+                        label.form-label First Name
+                .col
+                    .form-floating.col
+                        input.form-control(type="text" placeholder="Last Name" name="lastname" required)
+                        label.form-label Last Name
+            //- Email
+            .form-floating.mb-4
+                input.form-control(type="email" placeholder="Email" name="email" required)
+                label.form-label Email
+            //- Password & Confirm Password
+            .row.mb-4
+                .col
+                    .form-floating
+                        input.form-control(type="password" placeholder="Password" name="password" required)
+                        label.form-label Password
+                        .form-text must have at least 8 characters
+                .col
+                    .form-floating
+                        input.form-control(type="password" placeholder="Confirm Password" name="confPassword" required)
+                        label.form-label Confirm Password
+            //- Terms & Conditions Agreement Checkbox
+            .form-check.mb-3
+                input.form-check-input(type="checkbox" name="policy" required)
+                label.form-check-label I Agree to the  Privacy Policy, Terms & Conditions
+            //- Submit Form Button
+            button.btn.btn-dark.mb-3(type="submit") Sign Up
+            p Already have an account? Sign In
             
 
         

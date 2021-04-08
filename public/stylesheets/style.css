@@ -1,55 +1,74 @@
+/* Custom Fonts Imported */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
 /* ====== Global Styling ====== */
 * {
   margin: 0;
   padding: 0;
+  font-family: "Montserrat", sans-serif;
 }
 
-body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00b7ff;
+/* overwties bootstrap styling */
+.form-control {
+  background: #eee !important;
 }
 
 /* ====== Signup Styling ====== */
-.flex-box-auth {
+.auth-flex-box {
   display: flex;
   flex-direction: column-reverse;
   width: 100%;
-  min-height: 500px;
+  height: 100%;
   justify-items: center;
   align-items: center;
 }
 
 /* signup & signin (image) */
-.left-auth {
-  border-style: solid;
-  border-color: red;
+.auth-left {
   object-fit: cover;
   height: 100vh;
-  max-width: 50%;
+  max-width: 45%;
   display: block;
   display: none;
 }
 
 /* signup & signin (inputs) */
-.right-auth {
-  border-style: solid;
-  border-color: blue;
+.auth-right {
   min-height: 100vh;
   width: 100vw;
+}
+
+.auth-right h1 {
+  margin-top: 4rem;
+  text-align: center;
+  font-family: "Fredoka One", cursive;
+  font-size: 300%;
+}
+
+.auth-right h4 {
+  font-weight: 600;
+}
+
+.auth-right button {
+  width: 100%;
+  height: 50px;
+}
+
+/* signup & signin form */
+.auth-form {
+  margin-top: 4rem;
+  max-width: 550px;
+  padding: 25px;
 }
 
 /* Desktop with width greater than 900px */
 @media (min-width: 900px) {
   /* change flex direction from column to row */
-  .flex-box-auth {
+  .auth-flex-box {
     flex-direction: row;
   }
   /* display the image */
-  .left-auth {
-    max-width: 40%;
+  .auth-left {
     height: 100vh;
     display: contents;
     display: block;
