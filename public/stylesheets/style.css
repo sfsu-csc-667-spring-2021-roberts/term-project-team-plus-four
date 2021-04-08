@@ -54,6 +54,19 @@
   height: 50px;
 }
 
+.auth-right button:hover {
+  background-color: rgb(51, 51, 51);
+}
+
+.auth-right a {
+  font-weight: 600;
+  color: #000;
+}
+
+.auth-right a:hover {
+  color: rgb(99, 99, 99);
+}
+
 /* signup & signin form */
 .auth-form {
   margin-top: 4rem;

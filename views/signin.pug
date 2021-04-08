@@ -1,5 +1,21 @@
 extends auth-layout 
 
-//- TODO: Add need inputs within the div for signin
 block auth-right    
     .auth-right
+        h1 Classic Uno! 
+        form.needs-validation.auth-form.mx-auto
+            h4 Welcome Back!
+            //- Email
+            .form-floating.mb-4
+                input.form-control(type="email" placeholder="Email" name="email" required)
+                label.form-label Email
+            //- Password & Confirm Password
+            .form-floating.mb-4
+                        input.form-control(type="password" placeholder="Password" name="password" required)
+                        label.form-label Password
+            //- Submit Form Button
+            button.btn.btn-dark.mb-3(type="submit") Sign In
+            p No Account? 
+                a(href="/signup") Sign Up
+
+        

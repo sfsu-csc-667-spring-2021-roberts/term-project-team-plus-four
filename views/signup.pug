@@ -1,6 +1,5 @@
 extends auth-layout 
 
-//- TODO: Add need inputs within the div for signup
 block auth-right    
     .auth-right
         h1 Classic Uno! 
@@ -34,10 +33,14 @@ block auth-right
             //- Terms & Conditions Agreement Checkbox
             .form-check.mb-3
                 input.form-check-input(type="checkbox" name="policy" required)
-                label.form-check-label I Agree to the  Privacy Policy, Terms & Conditions
+                label.form-check-label I Agree to the 
+                    a(href="/") Privacy Policy 
+                label.form-check-label , 
+                    a(href="/") Terms & Conditions
             //- Submit Form Button
             button.btn.btn-dark.mb-3(type="submit") Sign Up
-            p Already have an account? Sign In
+            p Already Have An Account? 
+                a(href="/signin") Sign In
             
 
         
