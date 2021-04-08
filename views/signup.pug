@@ -2,4 +2,17 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  form(action='action_page.php', style="border:1px solid #ccc", method='POST')
+  p 
+    | Firstname:
+    input(type='text',plcaeholder='First Name', name='firstname', value='', required)
+    | Lastname: 
+    input(type='text',plcaeholder='Last Name', name='lastname', value='', required)
+    | Email: 
+    input(type='text',plcaeholder='Email', name='email', value='', required)
+    | Password: 
+    input(type='text',plcaeholder='Password', name='password', value='', required)
+  input(type='submit', value='Submit')
+  
+  
+
