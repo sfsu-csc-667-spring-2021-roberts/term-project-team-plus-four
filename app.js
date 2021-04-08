@@ -3,6 +3,11 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+var passport = require('passport');       // Authentication middleware, once we define a strategy we can use it anywhere on the app. 
+var flash = require('connect-flash');     // Session-based middleware displaying notifications to the users
+//var request = require('request');         // HTTP calls within the app
+var session = require("express-session"); // Helps manage session-related stuff, including cookies. 
+
 
 //  loads the environment variables defined in .env
 if (process.env.NODE_ENV.trim() === "development") {
@@ -19,7 +24,19 @@ var gamesRouter = require("./routes/games");
 
 var app = express();
 
-// view engine setup
+//-------- PASSPORT AUTHENTICATION --------
+require('./config/passport');
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+// app.use((req,res,next) => {
+//   console.log(req.session);
+//   console.log(req.user);
+//   next();
+// })
+
+//--------- VIEW ENGINE SETUP ----------
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
