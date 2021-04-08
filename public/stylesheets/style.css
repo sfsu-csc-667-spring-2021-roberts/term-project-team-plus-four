@@ -13,7 +13,7 @@
   background: #eee !important;
 }
 
-/* ====== Signup Styling ====== */
+/* ====== Signup & Signin Styling ====== */
 .auth-flex-box {
   display: flex;
   flex-direction: column-reverse;
@@ -72,6 +72,103 @@
   margin-top: 4rem;
   max-width: 550px;
   padding: 25px;
+}
+
+/* ====== Game Styling ====== */
+.game-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 0 0;
+  grid-template-areas:
+    "game-code first-opponent first-opponent ."
+    "second-opponent place-grab-cards place-grab-cards third-opponent"
+    "second-opponent place-grab-cards place-grab-cards third-opponent"
+    "game-buttons player-cards player-cards game-chat";
+}
+
+.game-code {
+  grid-area: game-code;
+}
+
+.game-code p {
+  position: absolute;
+  top: 1em;
+  left: 1em;
+}
+
+.first-opponent {
+  grid-area: first-opponent;
+}
+
+.second-opponent {
+  grid-area: second-opponent;
+}
+
+.third-opponent {
+  grid-area: third-opponent;
+}
+
+.player-cards {
+  grid-area: player-cards;
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+}
+
+.player-cards img {
+  height: 150px;
+  padding: 2px;
+}
+
+.game-buttons {
+  grid-area: game-buttons;
+}
+
+.game-buttons button {
+  position: absolute;
+  left: 1em;
+  bottom: 1em;
+  width: 150px;
+}
+
+.game-chat {
+  grid-area: game-chat;
+  text-align: center;
+}
+
+.place-grab-cards {
+  grid-area: place-grab-cards;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.place-card,
+.grab-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+}
+
+.place-grab-cards img {
+  height: 175px;
+}
+
+.first-opponent img {
+  width: 350px;
+  display: block;
+  margin: 0 auto 0 auto;
+}
+
+.second-opponent img,
+.third-opponent img {
+  height: 350px;
+}
+
+.third-opponent img {
+  position: absolute;
+  right: 0px;
 }
 
 /* Desktop with width greater than 900px */
