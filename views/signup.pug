@@ -4,11 +4,16 @@ extends auth-layout
 block right-auth    
     .right-auth
         h1 Classic Uno! 
-        label.form-label Create An Account
-        input.form-control(placeholder="First Name")
-        input.form-control(placeholder="Last Name")
-        input.form-control(placeholder="Email")
-        input.form-control(placeholder="Password")
-        input.form-control(placeholder="Confirm Password")
+        form
+            label.form-label Create An Account
+            input.form-control(type="text" placeholder="First Name" name="firstname" required)
+            input.form-control(type="text" placeholder="Last Name" name="lastname" required)
+            input.form-control(type="text" placeholder="Email" name="email" required)
+            input.form-control(type="password" placeholder="Password" name="password" required)
+            input.form-control(type="password" placeholder="Confirm Password" name="confPassword" required)
+            input.form-check-label(type="checkbox" name="policy" required)
+            label.form-label I Agree to the  Privacy Policy, Terms & Conditions
+            button.btn.btn-primary(type="submit") Submit
+            
 
         
