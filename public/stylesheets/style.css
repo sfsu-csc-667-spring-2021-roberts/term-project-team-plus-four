@@ -184,3 +184,105 @@
     display: block;
   }
 }
+
+
+
+
+/* ====== Lobbies Styling ====== */
+.lobbies-header{
+  font-size: 50px;
+  text-align: center;
+  font-family: "Fredoka One", cursive;
+}
+
+.lobbies-title{
+  font-size: 32px;
+  font-family: "Fredoka One", cursive;
+}
+
+.lobbies-container {
+  min-height: 85vh;
+  justify-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 10px 10px;
+  grid-template-areas:
+    "open-lobbies-container create-new-container lobby-chat-container";
+}
+
+.open-lobbies-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.4fr 2.2fr 0.4fr;
+  gap: 25px 0px;
+  grid-area: open-lobbies-container;
+  justify-items: center;
+}
+
+.open-lobbies-title {grid-area: open-lobbies-title; }
+
+.open-lobbies-data { grid-area: open-lobbies-data; }
+
+.open-lobbies-join { grid-area: open-lobbies-join; }
+
+.open-loobies-join-btn {
+  background-color: #eee;
+  border-radius: 10px;
+  border: none;
+  padding: 10px 75px;
+  font-weight: 900;
+}
+
+.open-lobbies-data-div{
+  background-color: #eee;
+  border-radius: 10px;
+  padding: 10px 100px;
+  height: 100%;
+}
+
+.open-lobbies-lobby-info{
+  font-weight: 900;
+}
+
+
+
+.create-new-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.5fr 0.4fr 2.52fr 0.58fr;
+  gap: 25px 0px;
+  grid-template-areas:
+    "create-new-title"
+    "create-new-code"
+    "create-new-players"
+    "create-new-start-btn";
+  grid-area: create-new-container;
+  justify-items: center;
+
+}
+
+.create-new-title { grid-area: create-new-title; }
+
+.create-new-code { grid-area: create-new-code; }
+
+.create-new-players { grid-area: create-new-players; }
+
+.create-new-start { grid-area: create-new-start-btn; }
+
+.lobby-chat-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.2fr 1.8fr;
+  gap: 25px 0px;
+  grid-template-areas:
+    "lobby-chat-title"
+    "lobby-chat-socket";
+  grid-area: lobby-chat-container;
+  justify-items: center;
+
+}
+
+.lobby-chat-title { grid-area: lobby-chat-title; }
+
+.lobby-chat-socket { grid-area: lobby-chat-socket; }
