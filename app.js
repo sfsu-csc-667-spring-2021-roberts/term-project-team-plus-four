@@ -3,6 +3,11 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+const passport = require("passport");
+const flash = require("express-flash");
+const session = require("express-session");
+
+const users = []
 
 //  loads the environment variables defined in .env
 if (process.env.NODE_ENV === "development") {
@@ -17,6 +22,7 @@ var signUpRouter = require("./routes/signup");
 var lobbiesRouter = require("./routes/lobbies");
 var gamesRouter = require("./routes/games");
 
+
 var app = express();
 
 // view engine setup
@@ -28,6 +34,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+
+// express-flash & express-session
+app.use(flash())
+app.use(session({
+  secret: process.env.SESSION_SECRET, //make a secret id for the user to stay logged in 
+  resave: false,                      //if nothing is changed within the session will not save
+  saveUninitialized: false
+}))
+app.use(passport.initialize())
+app.use(passport.session())
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);

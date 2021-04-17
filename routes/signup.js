@@ -6,4 +6,5 @@ router.get('/', function(req, res, next) {
   res.render('signup', { title: 'SignUp' });
 });
 
+
 module.exports = router;
