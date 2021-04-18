@@ -1,5 +1,59 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  p.lobbies-header New Game
+
+  .lobbies-container
+
+    //- container for open lobbies
+    .open-lobbies-container
+
+      //- styling for title
+      .open-loobies-title
+        p.lobbies-title  Open Lobbies
+
+      //- list of open lobbies
+      .open-loobies-data
+        .open-lobbies-data-div
+          - const lobbyInfo=["John","Suman","Jose","Freddie"]
+          each n,i in lobbyInfo
+            p.open-lobbies-lobby-info= n+" ("+i+"/4)"
+
+      //- join lobby botton
+      .open-loobies-join
+          button.open-loobies-join-btn(type="submit") Join
+
+    .create-new-container
+
+      //- create new title
+      .create-new-title
+        p.lobbies-title  Create New
+
+      //- create new code
+      .create-new-code
+        .create-new-code-div Code : 3HJ14PK
+
+      //- create new lobby players info
+      .create-new-players
+        .create-new-players-title Players In Lobby
+
+        //- full name of players in the lobby
+        .create-new-players-name
+          p 1. Player Full Name
+          p 2. Player Full Name
+          p 3. Player Full Name
+          p 4. Player Full Name
+
+      //- create new game button
+      .create-new-start
+        button.open-loobies-join-btn(type="submit") Start
+
+    .lobby-chat-container
+
+      //- lobby chat title
+      .lobby-chat-title
+        p.lobbies-title  Lobby Chat
+
+      //- lobby chat socket-io section
+      .lobby-chat-socket
+        p  [ SOCKET.IO ]
