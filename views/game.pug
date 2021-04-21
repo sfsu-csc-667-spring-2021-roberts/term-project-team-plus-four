@@ -1,12 +1,13 @@
 extends layout
 
 block content
+
     .game-container
-        .game-code 
+        .game-code
             //- top left game code
             - let gameCode = '12JNCK42';
                 p #[strong Game Code: ] #{gameCode}
-        .first-opponent 
+        .first-opponent
             //- First Opponent - Load the amount of cards that they have ()
             img(src='../content/svg/first-opponent-cards.svg')
         .second-opponent
@@ -16,29 +17,62 @@ block content
             //- Third Opponent - Load the amount of cards that they have ()
             img(src='../content/svg/third-opponent-cards.svg')
         .place-grab-cards
-            //- Place Card
-            .place-card.mr-3
+
+            //- TODO uncomment this for place card and grab card button
+
+            //- //- Place Card
+            //- .place-card.mr-3
+            //-     img.mb-3(src='../content/svg/back.svg')
+            //-     button.btn.btn-secondary(type="submit") Place Card
+            //- //- Grab Card(s)
+            //- .grab-card
+            //-     img.mb-3(src='../content/svg/back.svg')
+            //-     button.btn.btn-secondary(type="submit") Grab Card
+
+
+
+
+             //- uncomment code above to show original button ie place card
+             and  grab card
+             i am  using these buttons to trigger game won and game lost actions
+            //- to trigger game won action
+
+
+            .place-card
                 img.mb-3(src='../content/svg/back.svg')
-                button.btn.btn-secondary(type="submit") Place Card
-            //- Grab Card(s)
+
+                button.btn.btn-secondary(type="button", data-bs-toggle="modal",data-bs-target="#myModal") Game Won
+                #myModal.modal.fade(tabindex="-1", aria-hidden="true", role="dialog")
+                    .modal-dialog
+                        .modal-content
+                            .modal-header
+                                .modal-title Modal Titles
+
+                            .modal-body Modal Body
+
+                            .modal-footer Modal Footer
+
+
+            //- to trigger game lost action
             .grab-card
                 img.mb-3(src='../content/svg/back.svg')
-                button.btn.btn-secondary(type="submit") Grab Card
-        .player-cards 
+                button.btn.btn-secondary(type="submit") Game Lost
+
+
+
+        .player-cards
             //- amount of cards that the user has for this game
             - let numOfCards = ['blue-00.svg','green-01.svg','red-02.svg','wild-draw4.svg','wild.svg','yellow-draw2.svg', 'red-05.svg', 'green-09.svg', 'blue-reverse.svg', 'yellow-skip.svg'];
                 each card in numOfCards
                     img(src='../content/svg/' + card)
 
-        .game-buttons 
+        .game-buttons
             button.btn.btn-secondary(type="submit") Dashboard
-        .game-chat 
-            p game chat goes here
-    
 
-    
-    
-                
+
+
+        .game-chat
+            p game chat goes here
 
 
     //- center left second opponent

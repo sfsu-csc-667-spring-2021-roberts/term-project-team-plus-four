@@ -84,7 +84,8 @@
     "game-code first-opponent first-opponent ."
     "second-opponent place-grab-cards place-grab-cards third-opponent"
     "second-opponent place-grab-cards place-grab-cards third-opponent"
-    "game-buttons player-cards player-cards game-chat";
+    "game-buttons player-cards player-cards game-chat"
+    ;
 }
 
 .game-code {
@@ -333,4 +334,6 @@
   margin: 0px 30px;
 }
 
-
+myModal.in{
+  z-index: 999999;
+}
