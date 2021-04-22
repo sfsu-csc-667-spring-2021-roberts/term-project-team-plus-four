@@ -2,8 +2,9 @@ extends auth-layout
 
 block auth-right    
     .auth-right
-        h1 Classic Uno! 
-        form.needs-validation.auth-form.mx-auto
+        h1 Classic Uno!
+         
+        form(action="/signup" method="POST").needs-validation.auth-form.mx-auto
             h4 Create An Account
             //- First And Last Name
             .row.mb-4

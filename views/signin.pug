@@ -1,11 +1,13 @@
 extends auth-layout 
 
 block auth-right    
-    .auth-right
+    .auth-right   
         h1 Classic Uno! 
-        form.needs-validation.auth-form.mx-auto
+        form(action="/signin" method="POST").needs-validation.auth-form.mx-auto
+            .error #{message}
             h4 Welcome Back!
             //- Email
+            
             .form-floating.mb-4
                 input.form-control(type="email" placeholder="Email" name="email" required)
                 label.form-label Email
