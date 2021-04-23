@@ -41,22 +41,15 @@ block content
             .place-card
                 img.mb-3(src='../content/svg/back.svg')
 
-                button.btn.btn-secondary(type="button", data-bs-toggle="modal",data-bs-target="#myModal") Game Won
-                #myModal.modal.fade(tabindex="-1", aria-hidden="true", role="dialog")
-                    .modal-dialog
-                        .modal-content
-                            .modal-header
-                                .modal-title Modal Titles
-
-                            .modal-body Modal Body
-
-                            .modal-footer Modal Footer
+                button.btn.btn-secondary(type="button", data-bs-toggle="modal",data-bs-target="#gameWonModal") Game Won
+                include game-won-popup.pug
 
 
             //- to trigger game lost action
             .grab-card
                 img.mb-3(src='../content/svg/back.svg')
-                button.btn.btn-secondary(type="submit") Game Lost
+                button.btn.btn-secondary(type="button", data-bs-toggle="modal",data-bs-target="#gameLostModal") Game Lost
+                include game-lost-popup.pug
 
 
 
