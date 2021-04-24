@@ -47,13 +47,7 @@ router.post("/signup", async function (req, res, next){
 
 /* GET signin page. JF*/ 
 router.get("/signin", function (req, res, next) {
-<<<<<<< HEAD
-  res.render("signin", { 
-    title: "Uno Game | Signin", 
-    message: req.flash('error') });
-=======
   res.render("signin", { title: "Signin | Classic Uno" });
->>>>>>> origin/ui
 });
 
 /**  POST Sign in, Authenticated using passport JF**/
@@ -85,13 +79,7 @@ router.get("/join-game", function (req, res, next) {
 
 /* GET game page. */
 router.get("/game", function (req, res, next) {
-<<<<<<< HEAD
-  var t = gameController.test;
-  res.render("game", { title: "Uno Game"});
-  
-=======
   res.render("game", { title: "Game | Classic Uno" });
->>>>>>> origin/ui
 });
 
 
