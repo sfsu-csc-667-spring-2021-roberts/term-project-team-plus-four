@@ -1,7 +1,11 @@
-var express = require('express');
-var router = express.Router();
-var db = require("../db");
+/**
+ * Calls to db middleware for game information
+ * Stores functions for gameplay 
+ */
 
+var express = require('express');
+var db = require("../db");
+const socketapi = require('../backend/socketapi');
 
 
 const addCard = () => {
@@ -19,7 +23,21 @@ const test = () => {
   console.log("PLEASE WORK???");
 }
 
+//Gameplay functions
 
-module.exports = router;
+const placeCard = () => {
+  
+}
+
+const drawCard = () => {
+  
+}
+
+const cardPlayed = () => {
+
+}
+
+
+
 module.exports.addCard = addCard;
 module.exports.test = test;

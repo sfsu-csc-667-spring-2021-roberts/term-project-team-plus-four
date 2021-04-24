@@ -7,7 +7,7 @@ const initializePassport = require("../passport/passport-config");
 var users = []
 
 //import functions
-var gameController = require("../routes/games");
+var gameController = require("./gameplay");
 
 /* Passport-Local */
 initializePassport(
