@@ -10,7 +10,7 @@ const session = require("express-session");
 const users = []
 
 //  loads the environment variables defined in .env
-if (process.env.NODE_ENV === "development") {
+if (process.env.NODE_ENV.trim() === "development") {
   require("dotenv").config();
 }
 

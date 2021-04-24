@@ -19,7 +19,7 @@ module.exports = {
       },
       direction: {
         type: Sequelize.BOOLEAN,
-        defaultValue: Sequelize.literal(1),
+        defaultValue: true,
         allowNull: false,
       },
     });
