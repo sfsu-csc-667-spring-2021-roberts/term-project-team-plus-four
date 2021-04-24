@@ -82,7 +82,7 @@ router.get("/join-game", function (req, res, next) {
 /* GET game page. */
 router.get("/game", function (req, res, next) {
   var t = gameController.test;
-  res.render("game", { title: "Uno Game", pugTest: t});
+  res.render("game", { title: "Uno Game"});
   
 });
 
