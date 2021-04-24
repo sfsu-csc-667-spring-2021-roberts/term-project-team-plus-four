@@ -8,7 +8,6 @@ var users = []
 
 //import functions
 var gameController = require("../routes/games");
-const {addCard} = require("../routes/games");
 
 /* Passport-Local */
 initializePassport(
