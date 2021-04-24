@@ -1,5 +1,59 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .back-btn
+    button#backButton.btn.btn-light.grey-btn(onclick="dashboard()")
+      img(src='../content/svg/back-arrow.svg' alt="back arrow button")
+  h1.header New Game
+  .new-game-flex-box
+    //- Public Game(s) Section
+    .public-games
+      h4.subheader Public Games
+      h6 25 Public Games:
+      div
+        - for (var x = 0; x < 25; x++)
+          //- Game Information for public games
+          .game-info
+            button.btn.btn-light.grey-btn
+              p.game-code Code: 3F45T23
+              p.num-players 1 Player(s) Needed
+      button.btn.btn-dark.uno-btn.lobby-btn Join Game
+    //- Private Match Section
+    .private-game 
+      h4.subheader Private Game
+      h6 Share This Code With Friends:
+      .code
+        p Code: 
+        input(type="text" value="3F45T23" id="private-code" disabled) 
+        button.uno-btn(onclick='copytext()')
+          img(src="../content/svg/clipboard.svg", alt="copy to clipboard button")
+      h6 Players Within Private Game: 
+      ol 
+        - for (var x = 0; x < 4; x++)
+          li 
+            span Jose Gonzalez
+      button.btn.btn-dark.uno-btn.lobby-btn Start Game
+    //- Lobby Chat Section
+    .chat 
+      h4.subheader Lobby Chat
+      .chatbox
+
+  //- TODO:: move to its own JS File
+  script.
+    function dashboard() {
+      window.location.href = "/dashboard"
+    }
+    function copytext() {
+      /* Get the text field */
+      var copyText = document.getElementById("private-code");
+
+      /* Select the text field */
+      copyText.select();
+      copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+      /* Copy the text inside the text field */
+      document.execCommand("copy");
+
+      /* Alert the copied text */
+      alert("Copied Private Game Code: " + copyText.value);
+    }

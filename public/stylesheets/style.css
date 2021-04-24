@@ -1,6 +1,7 @@
 /* Custom Fonts Imported */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+
 /* ====== Global Styling ====== */
 * {
   margin: 0;
@@ -11,6 +12,141 @@
 /* overwties bootstrap styling */
 .form-control {
   background: #eee !important;
+}
+
+/* All h1 headers */
+.header {
+  margin-top: 4rem;
+  text-align: center;
+  font-family: "Fredoka One", cursive;
+}
+
+.header-img {
+  display: block;
+  margin: 4rem auto -3rem auto;
+  width: 8rem;
+}
+
+/* All h4 headers */
+.subheader {
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+/* Back Button */
+.back-btn {
+  position: absolute;
+  top: 3.8rem;
+  left: 10%;
+  width: 45px;
+  height: 45px;
+}
+
+.back-btn button {
+  background-color: #eee;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+}
+
+.grey-btn:hover {
+  background-color: rgb(219, 219, 219) !important;
+  border-style: none !important;
+}
+
+.back-btn img {
+  width: 20px;
+}
+
+/* Game Info Button for Resume Game & Lobby Public Games */
+.game-info {
+  width: 80%;
+}
+
+.game-info button {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  font-weight: 600;
+  background-color: #eee;
+  border-style: none;
+  border-radius: 10px;
+  padding: 0 1rem 0 1rem;
+}
+
+/* vertically centers p-tags */
+.game-info p {
+  margin: auto 0;
+  height: 25px;
+}
+
+/* Footer */
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.footer img {
+  width: 12px;
+  margin-top: -2px;
+}
+
+/* Include all links here */
+.auth-right a,
+.footer a {
+  font-weight: 600;
+  color: #000;
+}
+
+.auth-right a:hover,
+.footer a:hover {
+  color: rgb(99, 99, 99);
+}
+
+/* ====== Home Styling ====== */
+#landing-page-img {
+  display: block;
+  margin: 4rem auto 2rem auto;
+  width: 15rem;
+}
+
+.home-flex-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  width: 205px;
+}
+
+.home-flex-box button {
+  height: 50px;
+  width: 200px;
+  margin-bottom: 2rem;
+  border-style: none;
+  font-weight: 600 !important;
+}
+
+/* overwrites bootstrap button styling */
+.play {
+  background-color: #efce2e !important;
+  color: #2b2b2b !important;
+}
+
+.play:hover {
+  background-color: #ffdc00 !important;
+}
+
+.learn {
+  background-color: #eee !important;
+}
+
+.learn:hover {
+  background-color: rgb(219, 219, 219) !important;
 }
 
 /* ====== Signup & Signin Styling ====== */
@@ -39,9 +175,6 @@
 }
 
 .auth-right h1 {
-  margin-top: 4rem;
-  text-align: center;
-  font-family: "Fredoka One", cursive;
   font-size: 300%;
 }
 
@@ -49,22 +182,14 @@
   font-weight: 600;
 }
 
-.auth-right button {
+.auth-right button,
+.join-game button {
   width: 100%;
   height: 50px;
 }
 
-.auth-right button:hover {
-  background-color: rgb(51, 51, 51);
-}
-
-.auth-right a {
-  font-weight: 600;
-  color: #000;
-}
-
-.auth-right a:hover {
-  color: rgb(99, 99, 99);
+.uno-btn:hover {
+  background-color: rgb(51, 51, 51) !important;
 }
 
 /* signup & signin form */
@@ -75,100 +200,296 @@
 }
 
 /* ====== Game Styling ====== */
-.game-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
-  gap: 0 0;
-  grid-template-areas:
-    "game-code first-opponent first-opponent ."
-    "second-opponent place-grab-cards place-grab-cards third-opponent"
-    "second-opponent place-grab-cards place-grab-cards third-opponent"
-    "game-buttons player-cards player-cards game-chat";
-}
-
-.game-code {
-  grid-area: game-code;
-}
-
-.game-code p {
-  position: absolute;
-  top: 1em;
-  left: 1em;
-}
-
-.first-opponent {
-  grid-area: first-opponent;
-}
-
-.second-opponent {
-  grid-area: second-opponent;
-}
-
-.third-opponent {
-  grid-area: third-opponent;
-}
-
-.player-cards {
-  grid-area: player-cards;
+.header-game {
+  margin-top: 2rem;
   display: flex;
-  flex-direction: row;
-  overflow: auto;
+  flex-direction: column;
 }
 
-.player-cards img {
-  height: 150px;
-  padding: 2px;
+/* game logo */
+.header-game img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 5rem;
 }
 
-.game-buttons {
-  grid-area: game-buttons;
-}
-
-.game-buttons button {
-  position: absolute;
-  left: 1em;
-  bottom: 2em;
-  width: 150px;
-}
-
-.game-chat {
-  grid-area: game-chat;
+/* game code */
+.header-game p {
   text-align: center;
+  font-weight: 600;
+  height: 25px;
 }
 
-.place-grab-cards {
-  grid-area: place-grab-cards;
+/* Opponents in Game */
+.middle-game {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.opponent {
+  display: flex;
+  flex-direction: column;
+  margin: 0 1rem 1rem 1rem;
+  width: 200px;
+}
+
+.opponent img {
+  display: none;
+}
+
+.opponent-info {
+  display: flex;
+  justify-content: space-between;
+  background-color: #eee;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  width: 200px;
+}
+
+.opponent-info h6 {
+  font-weight: 600;
+  height: 25px;
+  margin-bottom: 0;
+}
+
+.opponent-info p {
+  height: 25px;
+  margin-bottom: 0;
+}
+
+.bottom-game {
   display: flex;
   justify-content: center;
-  align-items: center;
+  flex-wrap: wrap;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  height: 100%;
+}
+
+.flex-box {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 2rem;
+}
+.game {
+  display: flex;
+  justify-content: center;
 }
 
 .place-card,
 .grab-card {
   display: flex;
   flex-direction: column;
-  padding: 1em;
+  margin: 1rem;
 }
 
-.place-grab-cards img {
-  height: 175px;
+.place-card,
+.grab-card img {
+  width: 7rem;
 }
 
-.first-opponent img {
-  width: 350px;
-  display: block;
-  margin: 0 auto 0 auto;
+.place-card button,
+.grab-card button {
+  margin-top: 1rem;
 }
 
-.second-opponent img,
-.third-opponent img {
-  height: 350px;
+.my-cards {
+  margin-top: 2rem;
+  padding-top: 0.5rem;
+  display: flex;
+  overflow-x: scroll;
+  width: 100%;
 }
 
-.third-opponent img {
-  position: absolute;
-  right: 0px;
+.my-cards img {
+  width: 5rem;
+  margin-right: 0.5rem;
+}
+
+.my-cards img:hover {
+  margin-top: -1rem;
+}
+
+.game-chat {
+  max-height: 55vh;
+  width: 100%;
+  border-radius: 10px;
+  background-color: #eee;
+}
+
+/* ====== Dashboard Styling ====== */
+.dashboard-flex-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
+  width: 100%;
+  height: 100%;
+}
+
+.dashboard-flex-box button {
+  width: 12rem;
+  padding: 10px;
+  margin-bottom: 2rem;
+}
+
+/* ====== Resume Game(s) Styling ======  */
+.resume-game-flex-box {
+  display: flex;
+  max-width: 500px;
+  flex-direction: column;
+  justify-content: center;
+  margin: 4rem auto 0 auto;
+  padding: 0.5rem;
+}
+
+.resume-game-flex-box h5 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.active-game {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+/* trash button for active game */
+.active-game .right button {
+  height: 50px;
+  background-color: #eeeeee;
+  border-radius: 10px;
+}
+
+/* trash svg */
+.active-game .right img {
+  height: 25px;
+}
+
+/* ====== Lobby Styling ====== */
+.new-game-flex-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 4rem 1rem 0 1rem;
+}
+
+/* Public Game(s) */
+.public-games,
+.private-game,
+.chat {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.public-games h6,
+.private-game h6 {
+  padding-left: 1rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.public-games div {
+  height: 50vh;
+  margin: 0 1rem 1rem 1rem;
+  background-color: #eee;
+  border-radius: 10px;
+  overflow-y: scroll;
+}
+
+.public-games div button:focus {
+  background-color: #2b2b2b !important;
+  color: #fff !important;
+}
+
+.public-games .game-info {
+  margin: 1rem auto 1rem auto;
+  width: 80%;
+  height: 50px;
+}
+
+/* Join Public Game Button */
+.lobby-btn {
+  width: 95%;
+  margin: 0 auto;
+  height: 50px;
+  margin-bottom: 1rem;
+}
+
+/* Private Game Code */
+.code {
+  display: flex;
+  width: 80%;
+  text-align: center;
+  background-color: #eee;
+  margin: 0 auto 1rem auto;
+  height: 50px;
+  border-radius: 10px;
+  justify-content: space-between;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* centers code text */
+.code p {
+  margin-top: 0.8rem;
+}
+
+/* unique game code */
+.code input {
+  border-style: none;
+  width: 8rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* copy to clipboard button */
+.code button {
+  width: 2.5rem;
+  border-radius: 5px;
+  border-style: none;
+  background-color: #2b2b2b;
+  margin: 5px;
+}
+
+.code button img {
+  width: 1.5rem;
+}
+
+/* players in private game */
+.private-game ol {
+  width: 80%;
+  margin: 1rem auto 1rem auto;
+  padding: 1rem 1rem 0 3rem;
+  border-radius: 10px;
+  height: 36vh;
+  background-color: #eee;
+}
+
+.private-game li {
+  margin: 0 auto 1rem auto;
+  font-weight: 600;
+}
+
+.private-game li span {
+  margin-left: 1rem;
+}
+
+.chatbox {
+  height: 62vh;
+  width: 90%;
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: #eee;
 }
 
 /* Desktop with width greater than 900px */
@@ -183,154 +504,28 @@
     display: contents;
     display: block;
   }
+
+  .new-game-flex-box {
+    flex-direction: row;
+  }
+
+  /* display uno image for opponents */
+  .opponent img {
+    width: 85%;
+    margin: 0 auto 0 auto !important;
+    display: contents;
+    display: block;
+  }
+
+  /* scrolalble overflow for lots of opponents */
+  .middle-game {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+  }
+
+  /* game chat */
+  .game-chat {
+    width: 30vw;
+    margin-left: 1rem;
+  }
 }
-
-
-
-
-/* ====== Lobbies Styling ====== */
-.lobbies-header{
-  font-size: 50px;
-  text-align: center;
-  font-family: "Fredoka One", cursive;
-}
-
-.lobbies-title{
-  font-size: 32px;
-  font-family: "Fredoka One", cursive;
-}
-
-.lobbies-container {
-  min-height: 85vh;
-  justify-items: center;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
-  gap: 10px 10px;
-  grid-template-areas:
-    "open-lobbies-container create-new-container lobby-chat-container";
-}
-
-.open-lobbies-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 0.4fr 2.2fr 0.4fr;
-  gap: 25px 0px;
-  grid-area: open-lobbies-container;
-  justify-items: center;
-  width: 100%;
-}
-
-.open-lobbies-title {grid-area: open-lobbies-title; }
-
-.open-lobbies-data { grid-area: open-lobbies-data; }
-
-.open-lobbies-join { grid-area: open-lobbies-join; }
-
-.open-loobies-join-btn {
-  background-color: #eee;
-  border-radius: 10px;
-  border: none;
-  padding: 10px 75px;
-  font-weight: 900;
-}
-
-.open-lobbies-data-div{
-  background-color: #eee;
-  border-radius: 10px;
-  padding: 10px 100px;
-  height: 100%;
-}
-
-.open-lobbies-lobby-info{
-  font-weight: 900;
-}
-
-.create-new-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 0.5fr 0.4fr 2.52fr 0.58fr;
-  gap: 25px 0px;
-  grid-template-areas:
-    "create-new-title"
-    "create-new-code"
-    "create-new-players"
-    "create-new-start-btn";
-  grid-area: create-new-container;
-  justify-items: center;
-}
-
-.create-new-title { grid-area: create-new-title; }
-
-.create-new-code { grid-area: create-new-code; }
-
-.create-new-players { grid-area: create-new-players; }
-
-.create-new-start { grid-area: create-new-start-btn; }
-
-.create-new-players {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 0.3fr 1.7fr;
-  gap: 0px 0px;
-  grid-template-areas:
-    "create-new-players-title"
-    "create-new-players-name";
-  grid-area: create-new-players;
-  justify-items: center;
-  width: 100%;
-}
-
-.create-new-players-title {
-  grid-area: create-new-players-title;
-  font-weight: 800;
-  text-decoration: underline;
-  font-size: 20px;
-}
-.create-new-players-name {
-  grid-area: create-new-players-name;
-  width: 100%;
-  justify-items: start;
-  float: left;
-  font-weight: 600;
-}
-
-
-.create-new-code-div {
-  background-color: #eee;
-  border-radius: 10px;
-  border: none;
-  padding: 10px 100px;
-  font-weight: 900;
-}
-
-
-
-
-.lobby-chat-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 0.2fr 1.8fr;
-  gap: 25px 0px;
-  grid-template-areas:
-    "lobby-chat-title"
-    "lobby-chat-socket";
-  grid-area: lobby-chat-container;
-  justify-items: center;
-  width: 100%;
-
-}
-
-.lobby-chat-title { grid-area: lobby-chat-title; }
-
-.lobby-chat-socket {
-  grid-area: lobby-chat-socket;
-  height: 100%;
-  width: 65%;
-  justify-items: center;
-  background-color: #eee;
-  border-radius: 10px;
-  margin: 0px 30px;
-}
-
-

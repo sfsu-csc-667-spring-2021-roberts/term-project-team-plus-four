@@ -2,7 +2,7 @@ extends auth-layout
 
 block auth-right    
     .auth-right
-        h1 Classic Uno! 
+        h1.header Classic Uno! 
         form.needs-validation.auth-form.mx-auto
             h4 Create An Account
             //- First And Last Name
@@ -30,15 +30,8 @@ block auth-right
                     .form-floating
                         input.form-control(type="password" placeholder="Confirm Password" name="confPassword" required)
                         label.form-label Confirm Password
-            //- Terms & Conditions Agreement Checkbox
-            .form-check.mb-3
-                input.form-check-input(type="checkbox" name="policy" required)
-                label.form-check-label I Agree to the 
-                    a(href="/") Privacy Policy 
-                label.form-check-label , 
-                    a(href="/") Terms & Conditions
             //- Submit Form Button
-            button.btn.btn-dark.mb-3(type="submit") Sign Up
+            button.btn.btn-dark.mb-3.uno-btn(type="submit") Sign Up
             p Already Have An Account? 
                 a(href="/signin") Sign In
             

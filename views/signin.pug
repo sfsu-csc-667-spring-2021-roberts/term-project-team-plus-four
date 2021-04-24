@@ -2,7 +2,7 @@ extends auth-layout
 
 block auth-right    
     .auth-right
-        h1 Classic Uno! 
+        h1.header Classic Uno! 
         form.needs-validation.auth-form.mx-auto
             h4 Welcome Back!
             //- Email
@@ -14,7 +14,7 @@ block auth-right
                         input.form-control(type="password" placeholder="Password" name="password" required)
                         label.form-label Password
             //- Submit Form Button
-            button.btn.btn-dark.mb-3(type="submit") Sign In
+            button.btn.btn-dark.mb-3.uno-btn(type="submit") Sign In
             p No Account? 
                 a(href="/signup") Sign Up
 
