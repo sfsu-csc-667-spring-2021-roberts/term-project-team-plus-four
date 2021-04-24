@@ -1,5 +1,20 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .back-btn
+      button#backButton.btn.btn-light.grey-btn(onclick="dashboard()")
+        img(src='../content/svg/back-arrow.svg')
+  h1.header Join Game
+  form.needs-validation.auth-form.mx-auto.join-game
+    .form-floating.mb-4
+      input.form-control(type="text" placeholder="Game Code" name="gamecode" required)
+      label.form-label Game Code
+    button.btn.btn-dark.uno-btn(type="submit") Join
+  footer.footer
+      img#copyright(src='../content/svg/copyright.svg')  
+      span  2021 Classic Uno
+  //- TODO:: move to its own JS File
+  script.
+    function dashboard() {
+      window.location.href = "/dashboard"
+    }

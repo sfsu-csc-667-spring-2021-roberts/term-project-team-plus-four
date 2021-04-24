@@ -19,12 +19,12 @@ initializePassport(
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.render("index", { title: "Express" });
+  res.render("index", { title: "Classic Uno" });
 });
 
 /* GET signup page. */
 router.get("/signup", function (req, res, next) {
-  res.render("signup", { title: "Uno Game | Signup" });
+  res.render("signup", { title: "Signup | Classic Uno" });
 });
 
 /* POST signup page. */
@@ -47,9 +47,13 @@ router.post("/signup", async function (req, res, next){
 
 /* GET signin page. JF*/ 
 router.get("/signin", function (req, res, next) {
+<<<<<<< HEAD
   res.render("signin", { 
     title: "Uno Game | Signin", 
     message: req.flash('error') });
+=======
+  res.render("signin", { title: "Signin | Classic Uno" });
+>>>>>>> origin/ui
 });
 
 /**  POST Sign in, Authenticated using passport JF**/
@@ -61,29 +65,33 @@ router.post("/signin", passport.authenticate("local", {
 
 /* GET dashboard page. */
 router.get("/dashboard", function (req, res, next) {
-  res.render("dashboard", { title: "Uno Game | Dashboard" });
+  res.render("dashboard", { title: "Dashboard | Classic Uno" });
 });
 
 /* GET new game (lobby) page. */
 router.get("/lobby", function (req, res, next) {
-  res.render("lobby", { title: "Uno Game | Lobby" });
+  res.render("lobby", { title: "Lobby | Classic Uno" });
 });
 
 /* GET resume game page. */
 router.get("/resume-game", function (req, res, next) {
-  res.render("resume-game", { title: "Uno Game | Resume Game" });
+  res.render("resume-game", { title: "Resume Game | Classic Uno" });
 });
 
 /* GET join game page. */
 router.get("/join-game", function (req, res, next) {
-  res.render("join-game", { title: "Uno Game | Join Game" });
+  res.render("join-game", { title: "Join Game | Classic Uno" });
 });
 
 /* GET game page. */
 router.get("/game", function (req, res, next) {
+<<<<<<< HEAD
   var t = gameController.test;
   res.render("game", { title: "Uno Game"});
   
+=======
+  res.render("game", { title: "Game | Classic Uno" });
+>>>>>>> origin/ui
 });
 
 

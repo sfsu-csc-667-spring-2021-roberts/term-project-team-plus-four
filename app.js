@@ -16,12 +16,7 @@ if (process.env.NODE_ENV.trim() === "development") {
 }
 
 var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
 var testsRouter = require("./routes/tests");
-var loginRouter = require("./routes/login");
-var signUpRouter = require("./routes/signup");
-var lobbiesRouter = require("./routes/lobbies");
-var gamesRouter = require("./routes/games");
 
 
 var app = express();
@@ -47,12 +42,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
 app.use("/tests", testsRouter);
-app.use("/games", gamesRouter);
-app.use("/lobbies", lobbiesRouter);
-app.use("/login", loginRouter);
-app.use("/signup", signUpRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

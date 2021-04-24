@@ -1,5 +1,18 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  img#landing-page-img(src="../content/png/uno-main.png", alt="Uno Game Image")
+  .home-flex-box
+    button.btn.btn-dark.play(onclick="signin()") Play Uno!
+    //- External Link to Uno's Official Rules
+    a(href="https://service.mattel.com/instruction_sheets/42001pr.pdf") 
+      button.btn.btn-light.learn(src="https://www.unorules.com/") How To Play 
+  footer.footer
+      img#copyright(src='../content/svg/copyright.svg')  
+      span  2021 Classic Uno
+  //- TODO:: move to its own JS File
+  script.
+    function signin() {
+      window.location.href = "/signin"
+    }
+  
