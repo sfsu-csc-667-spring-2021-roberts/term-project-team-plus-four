@@ -4,8 +4,11 @@ const bcrypt = require('bcrypt');
 const passport = require("passport");
 const initializePassport = require("../passport/passport-config");
 
-
 var users = []
+
+//import functions
+var gameController = require("../routes/games");
+const {addCard} = require("../routes/games");
 
 /* Passport-Local */
 initializePassport(
@@ -78,8 +81,11 @@ router.get("/join-game", function (req, res, next) {
 
 /* GET game page. */
 router.get("/game", function (req, res, next) {
-  res.render("game", { title: "Uno Game" });
+  var t = gameController.test;
+  res.render("game", { title: "Uno Game"});
+  
 });
+
 
 
 module.exports = router;
