@@ -4,10 +4,10 @@
  */
 
 var express = require('express');
-var db = require("../db");
+var db = require("../db"); //needs to be removed
 const socketapi = require('../backend/socketapi');
 
-
+//Testing function
 const addCard = () => {
   //db.any('DELETE FROM cards');
   db.any(
@@ -25,19 +25,30 @@ const test = () => {
 
 //Gameplay functions
 
+//Play a card onto the pile
 const placeCard = () => {
   
 }
 
+//Draw a card from the deck and add it to your hand
 const drawCard = () => {
   
 }
 
-const cardPlayed = () => {
+//Shuffle the deck
+const shuffleTheDeck = () => {
 
 }
 
+//Select the card
+const selectACard = () => {
 
+}
+
+//Send message in game chat
+const sendMessageInGame = () => {
+  
+}
 
 module.exports.addCard = addCard;
 module.exports.test = test;
