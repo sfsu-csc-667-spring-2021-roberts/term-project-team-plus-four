@@ -4,3 +4,14 @@
  * 
  */
 
+const userSignIn = () => {
+  
+}
+
+const userSignOut = () => {
+  
+}
+
+const userSignUp = () => {
+  
+}
