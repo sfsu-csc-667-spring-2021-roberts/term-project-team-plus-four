@@ -3,7 +3,7 @@
  * 
  */
  var express = require('express');
- var db = require("../db");
+ var db = require(".");
 
  //Function to get user from db
  const getUser = (username) => {
