@@ -51,7 +51,7 @@ router.get("/signin", function (req, res, next) {
 
 /**  POST Sign in, Authenticated using passport JF**/
 router.post("/signin", passport.authenticate("local", {
-  successRedirect: '/lobbies',
+  successRedirect: '/dashboard',
   failureRedirect: '/signin',
   failureFlash: true, //show message
 }))
