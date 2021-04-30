@@ -3,6 +3,7 @@ var router = express.Router();
 const bcrypt = require('bcrypt');
 const passport = require("passport");
 const initializePassport = require("../passport/passport-config");
+let socketapi = require('../backend/socketapi');
 
 var users = []
 
@@ -41,7 +42,7 @@ router.post("/signup", async function (req, res, next){
   } catch {
     res.redirect("/signup")
   }
-  console.log(users)
+  console.log(users) 
 });
 
 /* GET signin page. JF*/ 
@@ -64,6 +65,8 @@ router.get("/dashboard", function (req, res, next) {
 /* GET new game (lobby) page. */
 router.get("/lobby", function (req, res, next) {
   res.render("lobby", { title: "Lobby | Classic Uno" });
+  console.log(socketapi)
+ 
 });
 
 /* GET resume game page. */

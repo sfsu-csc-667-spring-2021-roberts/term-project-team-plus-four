@@ -39,6 +39,9 @@ block content
       .chatbox
 
   //- TODO:: move to its own JS File
+  script(type="/socket.io/socket.io.js").
+    if(10 == 10){ alert("working");}
+
   script.
     function dashboard() {
       window.location.href = "/dashboard"

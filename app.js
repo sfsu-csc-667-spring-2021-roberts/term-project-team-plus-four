@@ -7,8 +7,6 @@ const passport = require("passport");
 const flash = require("express-flash");
 const session = require("express-session");
 
-const users = []
-
 
 //  loads the environment variables defined in .env
 if (process.env.NODE_ENV.trim() === "development") {
