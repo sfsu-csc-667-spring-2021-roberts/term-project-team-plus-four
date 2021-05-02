@@ -55,7 +55,7 @@ block content
   script.
     /*===Chat sockets===*/
     const socket = io();
-    socket.emit('chatter', 'Hello from client');
+    socket.emit('chatter', 'USERNAME has joined the lobby'); 
     
     $('form').submit(function() {
       const name = $('#name').val();
