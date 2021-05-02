@@ -36,13 +36,40 @@ block content
     //- Lobby Chat Section
     .chat 
       h4.subheader Lobby Chat
-      .chatbox
+      .chatbox 
+        section.section.chat-container
+          .container
+            .columns
+              .box.column.is-8.is-offset-2
+                .chat-messages.has-text-left
+                  ul#chat-messages
+                form
+                  .field.has-addons
+                    p.control
+                      input(type='text', class='input', value='User name', id='name')
+                      input(type='text', class='input', placeholder='Type here', id='message')
+                    p.control
+                      input(type='submit', class='button is-success', value='Post')
 
-  //- TODO:: move to its own JS File
-  script(type="/socket.io/socket.io.js").
-    if(10 == 10){ alert("working");}
-
+  //- TODO:: move to its own JS File 
   script.
+    /*===Chat sockets===*/
+    const socket = io();
+    socket.emit('chatter', 'Hello from client');
+    
+    $('form').submit(function() {
+      const name = $('#name').val();
+      const message = $('#message').val();
+    socket.emit('chatter', `${name} : ${message}`);
+      $('#message').val('');
+      return false;
+    });
+
+    socket.on('chatter', function(message) {
+      $('#chat-messages').append($('<li>').text(message));
+    });
+
+    /*===End chat sockets===*/
     function dashboard() {
       window.location.href = "/dashboard"
     }

@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const passport = require("passport");
 const initializePassport = require("../passport/passport-config");
 let socketapi = require('../backend/socketapi');
+var port = '3000';
 
 var users = []
 
@@ -65,8 +66,9 @@ router.get("/dashboard", function (req, res, next) {
 /* GET new game (lobby) page. */
 router.get("/lobby", function (req, res, next) {
   res.render("lobby", { title: "Lobby | Classic Uno" });
-  console.log(socketapi)
- 
+  
+  //When clicked res with the information like first name so we can announce that you have entered the lobby 
+  
 });
 
 /* GET resume game page. */
