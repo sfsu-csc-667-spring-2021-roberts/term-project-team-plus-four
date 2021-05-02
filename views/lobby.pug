@@ -33,6 +33,7 @@ block content
           li 
             span Jose Gonzalez
       button.btn.btn-dark.uno-btn.lobby-btn Start Game
+    
     //- Lobby Chat Section
     .chat 
       h4.subheader Lobby Chat
@@ -57,6 +58,7 @@ block content
     const socket = io();
     socket.emit('chatter', 'USERNAME has joined the lobby'); 
     
+    //Grabs the form
     $('form').submit(function() {
       const name = $('#name').val();
       const message = $('#message').val();
@@ -65,6 +67,7 @@ block content
       return false;
     });
 
+    //show the message
     socket.on('chatter', function(message) {
       $('#chat-messages').append($('<li>').text(message));
     });

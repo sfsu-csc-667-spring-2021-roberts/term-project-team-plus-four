@@ -484,6 +484,7 @@
   margin-left: 1rem;
 }
 
+/*===== CHAT =====*/
 .chatbox {
   height: 62vh;
   width: 90%;
@@ -491,13 +492,36 @@
   border-radius: 10px;
   background-color: #eee;
   position: relative;
+  
+}
+.field.has-addons{
+  position:absolute;
+  bottom: 0;
 }
 
-/* .chatform {
+.chat-messages.has-text-left{
+  margin:4px, 4px;
+  padding:4px;
+  width: auto;
+  max-height: 48vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align:justify;
+}
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
   text-align: center;
-  position: absolute;
-  bottom: 0;
-} */
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+
+/*===End lobby =====*/
 
 
 /* Desktop with width greater than 900px */
