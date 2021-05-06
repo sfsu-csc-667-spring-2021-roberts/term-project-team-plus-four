@@ -1,22 +1,17 @@
-var express = require("express");
-var router = express.Router();
-const bcrypt = require('bcrypt');
+const express = require("express");
+const router = express.Router();
+const bcrypt = require("bcrypt");
 const passport = require("passport");
 const initializePassport = require("../passport/passport-config");
-let socketapi = require('../backend/socketapi');
-var port = '3000';
 
-var users = []
-
-//import functions
-var gameController = require("./gameplay");
+var users = [];
 
 /* Passport-Local */
 initializePassport(
   passport,
-  email => users.find(user => user.email === email),
-  id => users.find(user => user.id === id)
-)
+  (email) => users.find((user) => user.email === email),
+  (id) => users.find((user) => user.id === id)
+);
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
@@ -29,34 +24,37 @@ router.get("/signup", function (req, res, next) {
 });
 
 /* POST signup page. */
-router.post("/signup", async function (req, res, next){
+router.post("/signup", async function (req, res, next) {
   try {
-    const hashedPassword = await bcrypt.hash(req.body.password, 1)
+    const hashedPassword = await bcrypt.hash(req.body.password, 1);
     users.push({
       id: Date.now().toString(), //take this line out when connected with database
       firstname: req.body.firstname,
       lastname: req.body.lastname,
       email: req.body.email,
-      password: hashedPassword
-    })
-    res.redirect("/signin")
+      password: hashedPassword,
+    });
+    res.redirect("/signin");
   } catch {
-    res.redirect("/signup")
+    res.redirect("/signup");
   }
-  console.log(users) 
+  console.log(users);
 });
 
-/* GET signin page. JF*/ 
+/* GET signin page. JF*/
 router.get("/signin", function (req, res, next) {
   res.render("signin", { title: "Signin | Classic Uno" });
 });
 
 /**  POST Sign in, Authenticated using passport JF**/
-router.post("/signin", passport.authenticate("local", {
-  successRedirect: '/dashboard',
-  failureRedirect: '/signin',
-  failureFlash: true, //show message
-}))
+router.post(
+  "/signin",
+  passport.authenticate("local", {
+    successRedirect: "/dashboard",
+    failureRedirect: "/signin",
+    failureFlash: true, //show message
+  })
+);
 
 /* GET dashboard page. */
 router.get("/dashboard", function (req, res, next) {
@@ -66,9 +64,6 @@ router.get("/dashboard", function (req, res, next) {
 /* GET new game (lobby) page. */
 router.get("/lobby", function (req, res, next) {
   res.render("lobby", { title: "Lobby | Classic Uno" });
-  
-  //When clicked res with the information like first name so we can announce that you have entered the lobby 
-  
 });
 
 /* GET resume game page. */
@@ -80,12 +75,5 @@ router.get("/resume-game", function (req, res, next) {
 router.get("/join-game", function (req, res, next) {
   res.render("join-game", { title: "Join Game | Classic Uno" });
 });
-
-/* GET game page. */
-router.get("/game", function (req, res, next) {
-  res.render("game", { title: "Game | Classic Uno" });
-});
-
-
 
 module.exports = router;

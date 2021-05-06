@@ -6,7 +6,7 @@ block content
         button#backButton.btn.btn-light.grey-btn(onclick="dashboard()")                
             img(src='../content/svg/back-arrow.svg')
     .header-game
-        img(src="./content/png/uno-main.png", alt="uno-logo")            
+        img(src="../content/png/uno-main.png", alt="uno-logo")            
         p Game Code: N34GNJ5N   
     .middle-game 
         //- temporary to show a Max of 9 opponents
@@ -21,18 +21,21 @@ block content
             .game
                 .place-card
                     img(src="../content/svg/back.svg", alt="Place Card") 
-                    button.btn.btn-dark.uno-btn Place Card 
+                    button#placeCard.btn.btn-dark.uno-btn Place Card 
                 .grab-card
                     img(src="../content/svg/back.svg", alt="Grab Card") 
-                    button.btn.btn-dark.uno-btn Grab Card 
+                    button#grabCard.btn.btn-dark.uno-btn Grab Card 
             .my-cards 
                 each card in ['blue-00.svg','green-01.svg','red-02.svg','wild-draw4.svg','wild.svg','yellow-draw2.svg', 'red-05.svg', 'green-09.svg', 'blue-reverse.svg', 'yellow-skip.svg']
-                    img(src='../content/svg/' + card, alt="card")
+                    img.cards(src='../content/svg/' + card, alt="card" id=card)
         .game-chat
             p [Socket.io]
     //- TODO:: move to its own JS File
+    script(src="/scripts/game.js" type="module")
     script.
         function dashboard() {
             window.location.href = "/dashboard"
         } 
         
+        
+
