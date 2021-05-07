@@ -221,6 +221,38 @@
   height: 25px;
 }
 
+#game {
+  position: relative;
+}
+
+/* users waiting their turn (modal & overlay) */
+#waiting {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5); /*dim the background*/
+  border-radius: 10px;
+}
+
+.waiting-modal {
+  width: 50%;
+  min-width: 350px;
+  height: 100px;
+  background: #efe271;
+  color: #000;
+  border-radius: 1rem;
+  text-align: center;
+  padding-top: 1rem;
+  margin: 10rem auto 0 auto;
+}
+
+.waiting-modal h5 {
+  font-weight: 600;
+}
+
 /* Opponents in Game */
 .middle-game {
   display: flex;
@@ -233,7 +265,7 @@
   display: flex;
   flex-direction: column;
   margin: 0 1rem 1rem 1rem;
-  width: 200px;
+  width: 250px;
 }
 
 .opponent img {
@@ -246,18 +278,18 @@
   background-color: #eee;
   border-radius: 10px;
   padding: 0.5rem 1rem;
-  width: 200px;
 }
 
 .opponent-info h6 {
   font-weight: 600;
-  height: 25px;
+  height: 20px;
   margin-bottom: 0;
 }
 
 .opponent-info p {
-  height: 25px;
+  height: 20px;
   margin-bottom: 0;
+  margin-top: -2px;
 }
 
 .bottom-game {
@@ -278,6 +310,7 @@
   max-width: 900px;
   margin-bottom: 2rem;
 }
+
 .game {
   display: flex;
   justify-content: center;
@@ -317,11 +350,21 @@
   margin-top: -1rem;
 }
 
+.my-cards img:focus {
+  border-style: solid;
+  border-color: red;
+}
+
 .game-chat {
   max-height: 55vh;
   width: 100%;
   border-radius: 10px;
   background-color: #eee;
+}
+
+/* highlights the user who's turn it is */
+#highlight-user {
+  background: #efe271 !important;
 }
 
 /* ====== Dashboard Styling ====== */
@@ -492,25 +535,24 @@
   border-radius: 10px;
   background-color: #eee;
   position: relative;
-  
 }
-.field.has-addons{
-  position:absolute;
+.field.has-addons {
+  position: absolute;
   bottom: 0;
 }
 
-.chat-messages.has-text-left{
-  margin:4px, 4px;
-  padding:4px;
+.chat-messages.has-text-left {
+  margin: 4px, 4px;
+  padding: 4px;
   width: auto;
   max-height: 48vh;
   overflow-x: hidden;
   overflow-y: auto;
-  text-align:justify;
+  text-align: justify;
 }
 
 .button {
-  background-color: #4CAF50; /* Green */
+  background-color: #4caf50; /* Green */
   border: none;
   color: white;
   padding: 15px 32px;
@@ -520,9 +562,7 @@
   font-size: 16px;
 }
 
-
 /*===End lobby =====*/
-
 
 /* Desktop with width greater than 900px */
 @media (min-width: 900px) {
