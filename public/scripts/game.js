@@ -178,7 +178,7 @@ const startGame = () => {
   let card;
   let tmpValue;
   let random;
-  let num = 14;
+  let num = 7;
 
   for (let i = 0; i < deck.length; i++) {
     random = Math.floor(Math.random() * i);
