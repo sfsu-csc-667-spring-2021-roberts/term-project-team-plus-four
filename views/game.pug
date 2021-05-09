@@ -1,11 +1,21 @@
 extends layout
 
 block content
+    //- waits on the inital user to start the game
+    #game-start
+    #game-start-modal
+        h5 Start Game
+        //- pkayers that have been added to the game addded here
+        h6 Players waiting for game to start:
+        .players-in-game
+            .player.grey-btn
+                p full name
+        button#game-start-btn.btn.btn-dark.uno-btn Start Game
     .back-btn
-        button#backButton.btn.btn-light.grey-btn(onclick="dashboard()")                
+        button#backButton.btn.btn-light.grey-btn(onclick='dashboard()')                
             img(src='../content/svg/back-arrow.svg')
     .header-game
-        img(src="../content/png/uno-main.png", alt="uno-logo") 
+        img(src='../content/png/uno-main.png', alt='uno-logo') 
         //- game code added here 
     .middle-game
         //- opponent(s) added here
@@ -14,23 +24,23 @@ block content
             #active 
             .game
                 .place-card
-                    img#placedDeck(src="../content/svg/back.svg", alt="Place Card") 
+                    img#placedDeck(src='../content/svg/back.svg', alt='Place Card') 
                     button#placeCard.btn.btn-dark.uno-btn Place Card 
                 .grab-card
-                    img(src="../content/svg/back.svg", alt="Grab Card") 
+                    img(src='../content/svg/back.svg', alt='Grab Card') 
                     button#grabCard.btn.btn-dark.uno-btn Grab Card 
-            .my-cards 
-                each card in ['blue-00.svg','green-01.svg','red-02.svg','wild-draw4.svg','wild-wild.svg','yellow-draw2.svg', 'red-05.svg', 'green-09.svg', 'blue-reverse.svg', 'yellow-skip.svg', "yellow-00.svg"]
-                    img.cards(src='../content/svg/deck/' + card, alt="card" id=card)
+            .center-cards
+                .my-cards 
+                //- user cards added here
         
         .game-chat
             p [Socket.io]
     //- TODO:: move to its own JS File
-    script(src="/scripts/game.js" type="module")
+    script(src='/scripts/game.js' type='module')
     script io();
     script.
         function dashboard() {
-            window.location.href = "/dashboard"
+            window.location.href = '/dashboard'
         } 
         
         

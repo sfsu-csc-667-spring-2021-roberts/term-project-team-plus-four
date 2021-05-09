@@ -38,9 +38,10 @@
 .back-btn {
   position: absolute;
   top: 3.8rem;
-  left: 10%;
+  left: 10% !important;
   width: 45px;
   height: 45px;
+  z-index: 100;
 }
 
 .back-btn button {
@@ -50,7 +51,8 @@
   border-radius: 100%;
 }
 
-.grey-btn:hover {
+.grey-btn:hover,
+.players-in-game .player:hover {
   background-color: rgb(219, 219, 219) !important;
   border-style: none !important;
 }
@@ -223,10 +225,11 @@
 
 #game {
   position: relative;
+  margin-bottom: 0;
 }
 
 /* users waiting their turn (modal & overlay) */
-#waiting {
+#overlay-on {
   position: absolute;
   top: 0;
   left: 0;
@@ -237,6 +240,36 @@
   border-radius: 10px;
 }
 
+#game-start {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5); /*dim the background*/
+}
+
+#game-start-modal {
+  position: absolute;
+  width: 50px;
+  min-width: 350px;
+  height: 65%;
+  max-height: 500px;
+  background: #efe271;
+  color: #000;
+  border-radius: 1rem;
+  text-align: center;
+  padding-top: 2rem;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 100;
+}
+
+/* waiting for game to begin modal */
 .waiting-modal {
   width: 50%;
   min-width: 350px;
@@ -249,8 +282,47 @@
   margin: 10rem auto 0 auto;
 }
 
-.waiting-modal h5 {
+.waiting-modal h5,
+#game-start-modal h5 {
   font-weight: 600;
+}
+
+.players-in-game {
+  position: inherit;
+  height: 60%;
+  width: 85%;
+  left: 0;
+  right: 0;
+  margin: 0.5rem auto 0 auto;
+  background-color: #eee;
+  overflow-y: scroll;
+  padding-top: 1rem;
+}
+
+.players-in-game .player {
+  width: 80%;
+  height: 35px;
+  border-radius: 10px;
+  margin: 0.5rem auto;
+  padding-top: 0.3rem;
+}
+
+#game-start-modal h6 {
+  font-size: 75%;
+  font-weight: 600;
+  text-align: left !important;
+  padding-left: 2rem;
+  margin-top: 2rem;
+}
+
+#game-start-modal button {
+  position: inherit;
+  margin: 0 auto;
+  z-index: 101;
+  bottom: 25px;
+  width: 80%;
+  left: 0;
+  right: 0;
 }
 
 /* Opponents in Game */
@@ -333,6 +405,12 @@
   margin-top: 1rem;
 }
 
+.center-cards {
+  display: flex;
+  margin: 0 auto;
+  max-width: 85%;
+}
+
 .my-cards {
   margin-top: 2rem;
   padding-top: 0.5rem;
@@ -360,6 +438,7 @@
   width: 100%;
   border-radius: 10px;
   background-color: #eee;
+  z-index: 100;
 }
 
 /* highlights the user who's turn it is */

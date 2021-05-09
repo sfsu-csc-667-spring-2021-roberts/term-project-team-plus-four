@@ -1,46 +1,93 @@
 // grabs card names from "/content/svg/deck" and place them into deck object
-let deck = [];
+
+let deck = [
+  // [TODO] read all files within /svg/deck and place it in a string array
+  "blue-00.svg",
+  "blue-01.svg",
+  "blue-02.svg",
+  "blue-03.svg",
+  "blue-04.svg",
+  "blue-05.svg",
+  "blue-06.svg",
+  "blue-07.svg",
+  "blue-08.svg",
+  "blue-09.svg",
+  "blue-draw2.svg",
+  "blue-reverse.svg",
+  "blue-skip.svg",
+
+  "green-00.svg",
+  "green-01.svg",
+  "green-02.svg",
+  "green-03.svg",
+  "green-04.svg",
+  "green-05.svg",
+  "green-06.svg",
+  "green-07.svg",
+  "green-08.svg",
+  "green-09.svg",
+  "green-draw2.svg",
+  "green-reverse.svg",
+  "green-skip.svg",
+
+  "red-00.svg",
+  "red-01.svg",
+  "red-02.svg",
+  "red-03.svg",
+  "red-04.svg",
+  "red-05.svg",
+  "red-06.svg",
+  "red-07.svg",
+  "red-08.svg",
+  "red-09.svg",
+  "red-draw2.svg",
+  "red-reverse.svg",
+  "red-skip.svg",
+
+  "yellow-00.svg",
+  "yellow-01.svg",
+  "yellow-02.svg",
+  "yellow-03.svg",
+  "yellow-04.svg",
+  "yellow-05.svg",
+  "yellow-06.svg",
+  "yellow-07.svg",
+  "yellow-08.svg",
+  "yellow-09.svg",
+  "yellow-draw2.svg",
+  "yellow-reverse.svg",
+  "yellow-skip.svg",
+
+  "wild-draw4.svg",
+  "wild-wild.svg",
+];
+
 let players = [
   {
-    id: 0,
-    name: "Bob Lee",
-    cards: [
-      "blue-00.svg",
-      "green-01.svg",
-      "red-02.svg",
-      "wild-draw4.svg",
-      "wild-wild.svg",
-      "yellow-draw2.svg",
-      "red-05.svg",
-      "green-09.svg",
-      "blue-reverse.svg",
-      "yellow-skip.svg",
-      "yellow-00.svg",
-    ],
+    id: 0, // [TODO] user id from db
+    name: "Bob Lee", // [TODO] user name from db
+    cards: [],
   },
   {
     id: 1,
     name: "Smith Brown",
-    cards: ["blue-reverse.svg", "yellow-skip.svg", "yellow-00.svg"],
+    cards: [],
   },
   {
     id: 2,
     name: "Candice Lopez",
-    cards: ["blue-reverse.svg", "yellow-00.svg"],
+    cards: [],
   },
   {
     id: 3,
     name: "Cindy Loo",
-    cards: [
-      "yellow-00.svg",
-      "blue-reverse.svg",
-      "yellow-skip.svg",
-      "yellow-00.svg",
-    ],
+    cards: [],
   },
 ];
+
 let grabDeck = ["blue-00.svg", "blue-01.svg", "blue-03.svg", "blue-04.svg"];
 let selectedCard = null; // card user chooses to play
+let activeUser = null; // user who start the game
 let topPlacedCard = { color: null, number: null };
 
 // add code from URL to UI
@@ -74,14 +121,6 @@ const opponentElement = (id, name, totalCards) => {
   document.querySelector(".middle-game").appendChild(opponent);
 };
 
-/* 
-load players into the game (start at 1 skips the user logged in 
-assuming logged in user is in index 0)
-*/
-for (let i = 1; i < players.length; i++) {
-  opponentElement(players[i].id, players[i].name, players[i].cards.length);
-}
-
 // Adds card to user's pile
 document.querySelector("#grabCard").addEventListener("click", (e) => {
   e.preventDefault();
@@ -102,6 +141,12 @@ Array.from(cards).forEach((card) => {
   });
 });
 
+// waiting on user to click "Start Game" button
+document.getElementById("game-start-btn").addEventListener("click", (e) => {
+  e.preventDefault;
+  startGame();
+});
+
 // Play selected card onto the pile
 document.querySelector("#placeCard").addEventListener("click", (e) => {
   // Client-Side (Remove card from pile)
@@ -116,13 +161,63 @@ document.querySelector("#placeCard").addEventListener("click", (e) => {
   if (validCard(selectedCard) || topPlacedCard.color === null) {
     // removes card from UI & Updates the Place Cards
     placeCard(selectedCard);
-  } else return alert(`Invalid Card: Card must be ${topPlacedCard.color}`);
+  } else
+    return alert(
+      `Invalid Card: Card must be ${topPlacedCard.color} or be a ${topPlacedCard.number}`
+    );
 
   // Server-Side (Add Card to DB)
 
   // Move onto the next user's turn
   waitTurn(true);
 });
+
+const startGame = () => {
+  // shuffle the deck
+  let myCards = document.querySelector(".my-cards");
+  let card;
+  let tmpValue;
+  let random;
+  let num = 14;
+
+  for (let i = 0; i < deck.length; i++) {
+    random = Math.floor(Math.random() * i);
+
+    tmpValue = deck[i];
+    deck[i] = deck[random];
+    deck[random] = tmpValue;
+  }
+
+  console.log("[DEBUG] shuffled deck: " + players.length);
+
+  // assign cards
+  for (let i = 0; i < players.length; i++) {
+    for (let j = 0; j < num; j++) {
+      players[i].cards.push(deck.pop());
+    }
+  }
+
+  // add opponent elements to UI
+  for (let i = 1; i < players.length; i++) {
+    opponentElement(players[i].id, players[i].name, players[i].cards.length);
+  }
+
+  // add user cards to the UI
+  for (let i = 0; i < num; i++) {
+    card = document.createElement("img");
+    card.className = "cards";
+    myCards.id = `${players[0].cards[i]}`;
+    card.src = `../content/svg/deck/${players[0].cards[i]}`;
+    console.log(`card showing: ${myCards.src}`);
+    myCards.appendChild(card);
+  }
+
+  // assign active user
+  activeUser = players[0].id;
+  // removes overlay and modal
+  document.getElementById("game-start").remove();
+  document.getElementById("game-start-modal").remove();
+};
 
 const validCard = (selectedCard) => {
   // grab top card from Placed Deck
@@ -186,13 +281,13 @@ const waitTurn = (wait) => {
   msg.appendChild(msgBody);
 
   if (wait) {
-    document.getElementById("active").id = "waiting";
-    document.getElementById("waiting").appendChild(msg);
+    document.getElementById("active").id = "overlay-on";
+    document.getElementById("overlay-on").appendChild(msg);
     // highlight the user who's turn it is
     document.querySelector(`#opponent-${players[1].id} .opponent-info`).id =
       "highlight-user";
   } else {
-    document.getElementById("waiting").id = "active";
+    document.getElementById("overlay-on").id = "active";
     document.getElementById("active").remove(msg);
     // remove highlighting attriute
     document
@@ -200,3 +295,13 @@ const waitTurn = (wait) => {
       .removeAttribute("highlight-user");
   }
 };
+
+/* shuffles the deck 
+  if deck empty:
+    grab them from the used card array,
+  else:
+    no card can be issued
+
+*/
+
+// add the card to the user's deck
