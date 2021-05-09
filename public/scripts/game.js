@@ -132,15 +132,6 @@ document.querySelector("#grabCard").addEventListener("click", (e) => {
   // Move onto the next user's turn
 });
 
-// Updates selected card
-var cards = document.getElementsByClassName("cards");
-Array.from(cards).forEach((card) => {
-  card.addEventListener("click", (e) => {
-    console.log("[DEBUG] Selected Card: " + e.target.id);
-    selectedCard = e.target.id;
-  });
-});
-
 // waiting on user to click "Start Game" button
 document.getElementById("game-start-btn").addEventListener("click", (e) => {
   e.preventDefault;
@@ -206,11 +197,20 @@ const startGame = () => {
   for (let i = 0; i < num; i++) {
     card = document.createElement("img");
     card.className = "cards";
-    myCards.id = `${players[0].cards[i]}`;
+    card.id = players[0].cards[i];
     card.src = `../content/svg/deck/${players[0].cards[i]}`;
-    console.log(`card showing: ${myCards.src}`);
     myCards.appendChild(card);
   }
+
+  // Updates selected card
+  let cards = document.getElementsByClassName("cards");
+  Array.from(cards).forEach((card) => {
+    card.addEventListener("click", (e) => {
+      console.log(card.id);
+      console.log("[DEBUG] Selected Card: " + e.target.id);
+      selectedCard = e.target.id;
+    });
+  });
 
   // assign active user
   activeUser = players[0].id;
