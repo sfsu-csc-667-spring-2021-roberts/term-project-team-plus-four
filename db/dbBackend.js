@@ -35,12 +35,12 @@ const createNewGame = () => {
 
 //Get game
 const getGame = (gameCode) => {
-  
+    return db.one('SELECT id FROM games WHERE id=$1', [gameCode]);
 }
 
 //Get list of games
 const getAllGames = () => {
-  
+  return db.one('SELECT * FROM games');
 }
 
 //Delete a game

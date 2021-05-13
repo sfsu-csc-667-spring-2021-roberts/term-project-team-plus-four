@@ -62,6 +62,8 @@ let deck = [
   "wild-wild.svg",
 ];
 
+//Get list of users from game with matching id
+//Need to track who is the user, related to login
 let players = [
   {
     id: 0, // [TODO] user id from db
@@ -84,6 +86,7 @@ let players = [
     cards: [],
   },
 ];
+
 
 let grabDeck = ["blue-00.svg", "blue-01.svg", "blue-03.svg", "blue-04.svg"];
 let selectedCard = null; // card user chooses to play
@@ -304,4 +307,4 @@ const waitTurn = (wait) => {
 
 */
 
-// add the card to the user's deck
+// add the card to the user's hand
