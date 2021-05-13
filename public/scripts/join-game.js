@@ -18,7 +18,7 @@ document.getElementById("code").addEventListener("change", (e) => {
 });
 
 document.getElementById("join-game-btn").addEventListener("click", (e) => {
-  validEntry(); //validates entry and sends user to game if game slots open
+  validInput(); //validates entry and sends user to game if game slots open
 });
 /*==========================  [Helper Fucntions]  ==========================*/
 /**
