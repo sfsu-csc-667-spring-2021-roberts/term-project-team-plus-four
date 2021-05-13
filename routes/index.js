@@ -3,6 +3,8 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const passport = require("passport");
 const initializePassport = require("../passport/passport-config");
+const addUser = require('../db/dbBackend');
+var db = require("../db");
 
 var users = [];
 
@@ -27,8 +29,12 @@ router.get("/signup", function (req, res, next) {
 router.post("/signup", async function (req, res, next) {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 1);
+    //forced way in I cant get it to work with next line
+    //addUser()
+    db.any('INSERT INTO users_ver2 ("email", "password", "firstname", "lastname") VALUES ($1, $2, $3, $4)', [req.body.email, hashedPassword, req.body.firstname, req.body.lastname]);
+    console.log("User added to DB");
     users.push({
-      id: Date.now().toString(), //take this line out when connected with database
+      id: Date.now().toString(), 
       firstname: req.body.firstname,
       lastname: req.body.lastname,
       email: req.body.email,
