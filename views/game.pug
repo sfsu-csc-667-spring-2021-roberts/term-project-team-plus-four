@@ -11,12 +11,16 @@ block content
             .player.grey-btn
                 p full name
         button#game-start-btn.btn.btn-dark.uno-btn Start Game
-    .back-btn
-        button#backButton.btn.btn-light.grey-btn(onclick='dashboard()')                
-            img(src='../content/svg/back-arrow.svg')
     .header-game
-        img(src='../content/png/uno-main.png', alt='uno-logo') 
-        //- game code added here 
+            img(src='../content/png/uno-main.png', alt='uno-logo') 
+            //- game code added here 
+    .header-container 
+        .back-game-btn
+            button#backButton.btn.btn-light.grey-btn(onclick='dashboard()')                
+                img(src='../content/svg/back-arrow.svg')
+        .chat-button
+            button(type="button" class="btn btn-dark uno-btn" id="game-chat-btn" data-toggle="modal" data-target="#gameChatBtn") Game Chat
+
     .middle-game
         //- opponent(s) added here
     .bottom-game
@@ -32,10 +36,17 @@ block content
             .center-cards
                 .my-cards 
                 //- user cards added here
-        
-        .game-chat
-            p [Socket.io]
-    //- TODO:: move to its own JS File
+    //- modal for socket.io game chat
+    .modal.fade#gameChatBtn(tabindex="-1" role="dialog" aria-labelledby="gameChatBtn" aria-hidden="true")
+        .modal-dialog(role="document")
+            .modal-content 
+                .modal-header 
+                    h5(class="modal-title" id="gameChatBtnLabel")
+                    button.btn.btn-dark(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                        span(aria-hidden="true") Close
+                .modal-body 
+                    p Chat Goes here
+                
     script(src='/scripts/game.js' type='module')
     script io();
     script.
