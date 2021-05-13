@@ -20,7 +20,6 @@ document.getElementById("code").addEventListener("change", (e) => {
 document.getElementById("join-game-btn").addEventListener("click", (e) => {
   validInput(); //validates entry and sends user to game if game slots open
 });
-
 /*==========================  [Helper Fucntions]  ==========================*/
 /**
  * Purpose: Checks to see if the input is of length 10 || not empty

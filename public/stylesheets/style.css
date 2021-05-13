@@ -1,8 +1,725 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+/* Custom Fonts Imported */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+
+/* ====== Global Styling ====== */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
 }
 
-a {
-  color: #00B7FF;
+/* overwties bootstrap styling */
+.form-control {
+  background: #eee !important;
+}
+
+/* All h1 headers */
+.header {
+  margin-top: 4rem;
+  text-align: center;
+  font-family: "Fredoka One", cursive;
+}
+
+.header-img {
+  display: block;
+  margin: 4rem auto -3rem auto;
+  width: 8rem;
+}
+
+/* All h4 headers */
+.subheader {
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+/* Back Button */
+.back-btn {
+  position: absolute;
+  top: 3.8rem;
+  left: 10% !important;
+  width: 45px;
+  height: 45px;
+  z-index: 100;
+}
+
+.back-btn button,
+.back-game-btn button {
+  background-color: #eee;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+}
+
+.grey-btn:hover,
+.players-in-game .player:hover {
+  background-color: rgb(219, 219, 219) !important;
+  border-style: none !important;
+}
+
+.back-btn img,
+.back-game-btn img {
+  width: 20px;
+}
+
+/* Game Info Button for Resume Game & Lobby Public Games */
+.game-info {
+  width: 80%;
+}
+
+.game-info button {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  font-weight: 600;
+  background-color: #eee;
+  border-style: none;
+  border-radius: 10px;
+  padding: 0 1rem 0 1rem;
+}
+
+/* vertically centers p-tags */
+.game-info p {
+  margin: auto 0;
+  height: 25px;
+}
+
+/* Footer */
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.footer img {
+  width: 12px;
+  margin-top: -2px;
+}
+
+/* Include all links here */
+.auth-right a,
+.footer a {
+  font-weight: 600;
+  color: #000;
+}
+
+.auth-right a:hover,
+.footer a:hover {
+  color: rgb(99, 99, 99);
+}
+
+/* ====== Home Styling ====== */
+#landing-page-img {
+  display: block;
+  margin: 4rem auto 2rem auto;
+  width: 15rem;
+}
+
+.home-flex-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  width: 205px;
+}
+
+.home-flex-box button {
+  height: 50px;
+  width: 200px;
+  margin-bottom: 2rem;
+  border-style: none;
+  font-weight: 600 !important;
+}
+
+/* overwrites bootstrap button styling */
+.play {
+  background-color: #efce2e !important;
+  color: #2b2b2b !important;
+}
+
+.play:hover {
+  background-color: #ffdc00 !important;
+}
+
+.learn {
+  background-color: #eee !important;
+}
+
+.learn:hover {
+  background-color: rgb(219, 219, 219) !important;
+}
+
+/* ====== Signup & Signin Styling ====== */
+.auth-flex-box {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100%;
+  height: 100%;
+  justify-items: center;
+  align-items: center;
+}
+
+/* signup & signin (image) */
+.auth-left {
+  object-fit: cover;
+  height: 100vh;
+  max-width: 45%;
+  display: block;
+  display: none;
+}
+
+/* signup & signin (inputs) */
+.auth-right {
+  min-height: 100vh;
+  width: 100vw;
+}
+
+.auth-right h1 {
+  font-size: 300%;
+}
+
+.auth-right h4 {
+  font-weight: 600;
+}
+
+.auth-right button,
+.join-game button {
+  width: 100%;
+  height: 50px;
+}
+
+#join-game-btn {
+  display: block;
+  margin: -1rem auto 0 auto;
+  width: 100%;
+  max-width: 500px;
+  height: 50px;
+  font-family: "Montserrat", sans-serif;
+}
+.uno-btn:hover {
+  background-color: rgb(51, 51, 51) !important;
+}
+
+/* signup & signin form */
+.auth-form {
+  margin-top: 4rem;
+  max-width: 550px;
+  padding: 25px;
+}
+
+/* ====== Game Styling ====== */
+.header-container {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  top: 1rem;
+  left: 0;
+  right: 0;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  height: 6rem;
+}
+
+/* Back Button */
+.back-game-btn {
+  width: 45px;
+  height: 45px;
+  margin-left: 1rem;
+  z-index: 100;
+}
+
+.header-game {
+  display: flex;
+  flex-direction: column;
+  width: 15rem;
+  height: 6rem;
+  margin: 1rem auto 2rem auto;
+}
+
+/* game logo */
+.header-game img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 5rem;
+}
+
+/* game code */
+.header-game p {
+  text-align: center;
+  font-weight: 600;
+  height: 25px;
+}
+
+.chat-button {
+  z-index: 100;
+  height: 45px;
+  margin-right: 1rem;
+}
+
+#game-chat-btn {
+  display: block;
+  margin: 0 auto;
+  background-color: #efce2e;
+  color: #000;
+  font-weight: 600;
+  border-style: none;
+}
+
+#game-chat-btn:hover {
+  color: #fff;
+}
+
+#game {
+  position: relative;
+  margin-bottom: 0;
+}
+
+/* users waiting their turn (modal & overlay) */
+#overlay-on {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5); /*dim the background*/
+  border-radius: 10px;
+}
+
+#game-start {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5); /*dim the background*/
+}
+
+#game-start-modal {
+  position: absolute;
+  width: 50px;
+  min-width: 350px;
+  height: 65%;
+  max-height: 500px;
+  background: #efe271;
+  color: #000;
+  border-radius: 1rem;
+  text-align: center;
+  padding-top: 2rem;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 100;
+}
+
+/* waiting for game to begin modal */
+.waiting-modal {
+  width: 50%;
+  min-width: 350px;
+  height: 100px;
+  background: #efe271;
+  color: #000;
+  border-radius: 1rem;
+  text-align: center;
+  padding-top: 1rem;
+  margin: 10rem auto 0 auto;
+}
+
+.waiting-modal h5,
+#game-start-modal h5 {
+  font-weight: 600;
+}
+
+.players-in-game {
+  position: inherit;
+  height: 60%;
+  width: 85%;
+  left: 0;
+  right: 0;
+  margin: 0.5rem auto 0 auto;
+  background-color: #eee;
+  overflow-y: scroll;
+  padding-top: 1rem;
+}
+
+.players-in-game .player {
+  width: 80%;
+  height: 35px;
+  border-radius: 10px;
+  margin: 0.5rem auto;
+  padding-top: 0.3rem;
+}
+
+#game-start-modal h6 {
+  font-size: 75%;
+  font-weight: 600;
+  text-align: left !important;
+  padding-left: 2rem;
+  margin-top: 2rem;
+}
+
+#game-start-modal button {
+  position: inherit;
+  margin: 0 auto;
+  z-index: 101;
+  bottom: 25px;
+  width: 80%;
+  left: 0;
+  right: 0;
+}
+
+/* Opponents in Game */
+.middle-game {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.opponent {
+  display: flex;
+  flex-direction: column;
+  margin: 0 1rem 1rem 1rem;
+  width: 250px;
+}
+
+.opponent img {
+  display: none;
+}
+
+.opponent-info {
+  display: flex;
+  justify-content: space-between;
+  background-color: #eee;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+}
+
+.opponent-info h6 {
+  font-weight: 600;
+  height: 20px;
+  margin-bottom: 0;
+}
+
+.opponent-info p {
+  height: 20px;
+  margin-bottom: 0;
+  margin-top: -2px;
+}
+
+.bottom-game {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  height: 100%;
+}
+
+.flex-box {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 2rem;
+}
+
+.game {
+  display: flex;
+  justify-content: center;
+}
+
+.place-card,
+.grab-card {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.place-card,
+.grab-card img {
+  width: 7rem;
+}
+
+.place-card button,
+.grab-card button {
+  margin-top: 1rem;
+}
+
+.center-cards {
+  display: flex;
+  margin: 0 auto;
+  max-width: 85%;
+}
+
+.my-cards {
+  margin-top: 2rem;
+  padding-top: 0.5rem;
+  display: flex;
+  overflow-x: scroll;
+  width: 100%;
+}
+
+.my-cards img {
+  width: 5rem;
+  margin-right: 0.5rem;
+}
+
+.my-cards img:hover {
+  margin-top: -1rem;
+}
+
+.my-cards img:focus {
+  border-style: solid;
+  border-color: red;
+}
+
+.game-chat {
+  visibility: hidden;
+}
+
+/* highlights the user who's turn it is */
+#highlight-user {
+  background: #efe271 !important;
+}
+
+/* ====== Dashboard Styling ====== */
+.dashboard-flex-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
+  width: 100%;
+  height: 100%;
+}
+
+.dashboard-flex-box button {
+  width: 12rem;
+  padding: 10px;
+  margin-bottom: 2rem;
+}
+
+/* ====== Resume Game(s) Styling ======  */
+.resume-game-flex-box {
+  display: flex;
+  max-width: 500px;
+  flex-direction: column;
+  justify-content: center;
+  margin: 4rem auto 0 auto;
+  padding: 0.5rem;
+}
+
+.resume-game-flex-box h5 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.active-game {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+/* trash button for active game */
+.active-game .right button {
+  height: 50px;
+  background-color: #eeeeee;
+  border-radius: 10px;
+}
+
+/* trash svg */
+.active-game .right img {
+  height: 25px;
+}
+
+/* ====== Lobby Styling ====== */
+.new-game-flex-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 4rem 1rem 0 1rem;
+}
+
+/* Public Game(s) */
+.public-games,
+.private-game,
+.chat {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.public-games h6,
+.private-game h6 {
+  padding-left: 1rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.public-games div {
+  height: 50vh;
+  margin: 0 1rem 1rem 1rem;
+  background-color: #eee;
+  border-radius: 10px;
+  overflow-y: scroll;
+}
+
+.public-games div button:focus {
+  background-color: #2b2b2b !important;
+  color: #fff !important;
+}
+
+.public-games .game-info {
+  margin: 1rem auto 1rem auto;
+  width: 80%;
+  height: 50px;
+}
+
+/* Join Public Game Button */
+.lobby-btn {
+  width: 95%;
+  margin: 0 auto;
+  height: 50px;
+  margin-bottom: 1rem;
+}
+
+/* Private Game Code */
+.code {
+  display: flex;
+  width: 80%;
+  text-align: center;
+  background-color: #eee;
+  margin: 0 auto 1rem auto;
+  height: 50px;
+  border-radius: 10px;
+  justify-content: space-between;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* centers code text */
+.code p {
+  margin-top: 0.8rem;
+}
+
+/* unique game code */
+.code input {
+  border-style: none;
+  width: 8rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* copy to clipboard button */
+.code button {
+  width: 2.5rem;
+  border-radius: 5px;
+  border-style: none;
+  background-color: #2b2b2b;
+  margin: 5px;
+}
+
+.code button img {
+  width: 1.5rem;
+}
+
+/* players in private game */
+.private-game ol {
+  width: 80%;
+  margin: 1rem auto 1rem auto;
+  padding: 1rem 1rem 0 3rem;
+  border-radius: 10px;
+  height: 36vh;
+  background-color: #eee;
+}
+
+.private-game li {
+  margin: 0 auto 1rem auto;
+  font-weight: 600;
+}
+
+.private-game li span {
+  margin-left: 1rem;
+}
+
+/*===== CHAT =====*/
+.chatbox {
+  height: 62vh;
+  width: 90%;
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: #eee;
+  position: relative;
+}
+.field.has-addons {
+  position: absolute;
+  bottom: 0;
+}
+
+.chat-messages.has-text-left {
+  margin: 4px, 4px;
+  padding: 4px;
+  width: auto;
+  max-height: 48vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: justify;
+}
+
+.button {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+/*===End lobby =====*/
+
+/* Desktop with width greater than 900px */
+@media (min-width: 900px) {
+  /* change flex direction from column to row */
+  .auth-flex-box {
+    flex-direction: row;
+  }
+  /* display the image */
+  .auth-left {
+    height: 100vh;
+    display: contents;
+    display: block;
+  }
+
+  .new-game-flex-box {
+    flex-direction: row;
+  }
+
+  /* display uno image for opponents */
+  .opponent img {
+    width: 85%;
+    margin: 0 auto 0 auto !important;
+    display: contents;
+    display: block;
+  }
+
+  /* scrolalble overflow for lots of opponents */
+  .middle-game {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+  }
 }

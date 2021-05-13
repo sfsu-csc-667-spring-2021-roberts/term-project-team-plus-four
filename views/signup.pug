@@ -1,0 +1,39 @@
+extends auth-layout 
+
+block auth-right    
+    .auth-right
+        h1.header Classic Uno! 
+        form(action="/signup" method="POST").needs-validation.auth-form.mx-auto
+            h4 Create An Account
+            //- First And Last Name
+            .row.mb-4
+                .col
+                    .form-floating
+                        input.form-control(type="text" placeholder="First Name" name="firstname" required)
+                        label.form-label First Name
+                .col
+                    .form-floating.col
+                        input.form-control(type="text" placeholder="Last Name" name="lastname" required)
+                        label.form-label Last Name
+            //- Email
+            .form-floating.mb-4
+                input.form-control(type="email" placeholder="Email" name="email" required)
+                label.form-label Email
+            //- Password & Confirm Password
+            .row.mb-4
+                .col
+                    .form-floating
+                        input.form-control(type="password" placeholder="Password" name="password" required)
+                        label.form-label Password
+                        .form-text must have at least 8 characters
+                .col
+                    .form-floating
+                        input.form-control(type="password" placeholder="Confirm Password" name="confPassword" required)
+                        label.form-label Confirm Password
+            //- Submit Form Button
+            button.btn.btn-dark.mb-3.uno-btn(type="submit") Sign Up
+            p Already Have An Account? 
+                a(href="/signin") Sign In
+            
+
+        

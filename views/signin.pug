@@ -1,0 +1,23 @@
+extends auth-layout 
+
+block auth-right    
+    .auth-right
+        h1.header Classic Uno! 
+        form(action="/signin" method="POST").needs-validation.auth-form.mx-auto
+            .error #{message}
+            h4 Welcome Back!
+            //- Email
+            
+            .form-floating.mb-4
+                input.form-control(type="email" placeholder="Email" name="email" required)
+                label.form-label Email
+            //- Password & Confirm Password
+            .form-floating.mb-4
+                        input.form-control(type="password" placeholder="Password" name="password" required)
+                        label.form-label Password
+            //- Submit Form Button
+            button.btn.btn-dark.mb-3.uno-btn(type="submit") Sign In
+            p No Account? 
+                a(href="/signup") Sign Up
+
+        

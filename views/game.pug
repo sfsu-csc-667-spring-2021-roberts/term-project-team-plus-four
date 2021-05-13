@@ -1,0 +1,54 @@
+extends layout
+
+block content
+    //- waits on the inital user to start the game
+    #game-start
+    #game-start-modal
+        h5 Start Game
+        //- pkayers that have been added to the game addded here
+        h6 Players waiting for game to start:
+        .players-in-game
+            .player.grey-btn
+                p full name
+        button#game-start-btn.btn.btn-dark.uno-btn Start Game
+    .header-game
+            img(src='../content/png/uno-main.png', alt='uno-logo') 
+            //- game code added here 
+    .header-container 
+        .back-game-btn
+            button#backButton.btn.btn-light.grey-btn(onclick="window.location.href = '/dashboard'")                
+                img(src='../content/svg/back-arrow.svg')
+        .chat-button
+            button(type="button" class="btn btn-dark uno-btn" id="game-chat-btn" data-toggle="modal" data-target="#gameChatBtn") Game Chat
+
+    .middle-game
+        //- opponent(s) added here
+    .bottom-game
+        .flex-box#game
+            #active 
+            .game
+                .place-card
+                    img#placedDeck(src='../content/svg/back.svg', alt='Place Card') 
+                    button#placeCard.btn.btn-dark.uno-btn Place Card 
+                .grab-card
+                    img(src='../content/svg/back.svg', alt='Grab Card') 
+                    button#grabCard.btn.btn-dark.uno-btn Grab Card 
+            .center-cards
+                .my-cards 
+                //- user cards added here
+    //- modal for socket.io game chat
+    .modal.fade#gameChatBtn(tabindex="-1" role="dialog" aria-labelledby="gameChatBtn" aria-hidden="true")
+        .modal-dialog(role="document")
+            .modal-content 
+                .modal-header 
+                    h5(class="modal-title" id="gameChatBtnLabel")
+                    button.btn.btn-dark(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                        span(aria-hidden="true") Close
+                .modal-body 
+                    p Chat Goes here
+                
+    script(src='/scripts/game.js' type='module')
+    script io();
+        
+        
+
