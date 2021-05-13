@@ -1,6 +1,6 @@
 /**
  * File: resume-game.js
- * Location: This js file is included as a script within layout.pug
+ * Location: This js file is included as a script within /views/resume-game.pug
  * Purpose: Loads all user current games with their delete button.
  * Also handles the deletion of the game if the user wishes to delete a game
  *
@@ -8,11 +8,11 @@
 
 // TODO: grab all the user's games from db
 let userGames = [
-  { id: 0, code: "0000000", numPlayers: "4", date: "Feburary 02, 2021" },
-  { id: 1, code: "1111111", numPlayers: "5", date: "Feburary 02, 2021" },
-  { id: 2, code: "2222222", numPlayers: "3", date: "Feburary 02, 2021" },
-  { id: 3, code: "3333333", numPlayers: "10", date: "Feburary 02, 2021" },
-  { id: 4, code: "4444444", numPlayers: "8", date: "Feburary 02, 2021" },
+  { id: 0, code: "0000000000", numPlayers: "4", date: "Feburary 02, 2021" },
+  { id: 1, code: "1111111111", numPlayers: "5", date: "Feburary 02, 2021" },
+  { id: 2, code: "2222222222", numPlayers: "3", date: "Feburary 02, 2021" },
+  { id: 3, code: "3333333333", numPlayers: "10", date: "Feburary 02, 2021" },
+  { id: 4, code: "4444444444", numPlayers: "8", date: "Feburary 02, 2021" },
 ];
 
 /*========================== [Helper Functions] ==========================*/

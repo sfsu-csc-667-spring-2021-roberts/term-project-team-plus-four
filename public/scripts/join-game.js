@@ -1,6 +1,6 @@
 /**
  * File: join-game.js
- * Location: This js file is included as a script within layout.pug
+ * Location: This js file is included as a script within /views/join-game.pug
  * Purpose: Allows logged in user to enter a new game with a unique code.
  * Checks to see if game has open availability, if not game full message is prompted
  *
@@ -22,11 +22,11 @@ document.getElementById("join-game-btn").addEventListener("click", (e) => {
 });
 /*==========================  [Helper Fucntions]  ==========================*/
 /**
- * Purpose: Checks to see if the input is of length 7 || not empty
+ * Purpose: Checks to see if the input is of length 10 || not empty
  */
 const validInput = () => {
-  if (code === undefined || code.length !== 7) {
-    alert("[Error] Game Code must be seven characters long");
+  if (code === undefined || code.length !== 10) {
+    alert("[Error] Game Code must be ten characters long");
   } else {
     if (openSlots()) {
       // TODO: add game to users open games
@@ -42,7 +42,7 @@ const validInput = () => {
  */
 const openSlots = () => {
   // TODO: grab game from open games DB
-  let game = { id: 0, code: "1234567", players: 9 };
+  let game = { id: 0, code: "0123456789", players: 9 };
 
   console.log(game.players);
   if (game.players < 10 && game.code == code) return true;

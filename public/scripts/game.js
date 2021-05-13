@@ -1,6 +1,6 @@
 /**
  * File: game.js
- * Location: This js file is included as a script within layout.pug
+ * Location: This js file is included as a script within /views/game.pug
  * Purpose: Anything that has to do with Game Play DOM manipulation (for dynamic like rendering)
  * and communication with DB is done here
  *
