@@ -192,6 +192,14 @@
   height: 50px;
 }
 
+#join-game-btn {
+  display: block;
+  margin: -1rem auto 0 auto;
+  width: 100%;
+  max-width: 500px;
+  height: 50px;
+  font-family: "Montserrat", sans-serif;
+}
 .uno-btn:hover {
   background-color: rgb(51, 51, 51) !important;
 }

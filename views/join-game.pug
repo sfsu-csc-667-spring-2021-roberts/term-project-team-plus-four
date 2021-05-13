@@ -7,9 +7,10 @@ block content
   h1.header Join Game
   form.needs-validation.auth-form.mx-auto.join-game
     .form-floating.mb-4
-      input.form-control(type="text" placeholder="Game Code" name="gamecode" required)
+      input.form-control#code(type="text" placeholder="Game Code" name="gamecode" required)
       label.form-label Game Code
-    button.btn.btn-dark.uno-btn(type="submit") Join
+  button.btn.btn-dark.uno-btn#join-game-btn Join
   footer.footer
       img#copyright(src='../content/svg/copyright.svg')  
       span  2021 Classic Uno
+  script(src='/scripts/join-game.js' type='module')

@@ -1,7 +1,7 @@
 /**
  * File: resume-game.js
  * Location: This js file is included as a script within layout.pug
- * Purpose: Loads all user current games, and its delete button.
+ * Purpose: Loads all user current games with their delete button.
  * Also handles the deletion of the game if the user wishes to delete a game
  *
  */
