@@ -1,3 +1,11 @@
+/**
+ * File: game.js
+ * Location: This js file is included as a script within layout.pug
+ * Purpose: Anything that has to do with Game Play DOM manipulation (for dynamic like rendering)
+ * and communication with DB is done here
+ *
+ */
+
 // deck is an initial array of stored card names retrieved from /contents/svg/deck
 let deck = [
   // Blue Cards
@@ -144,7 +152,7 @@ document.querySelector("#placeCard").addEventListener("click", (e) => {
   waitTurn(true); // next user
 });
 
-/*==========================  [Element Creators]  ==========================*/
+/*==========================  [DOM Manipulation]  ==========================*/
 
 /**
  * Purpose: Creates opponent element and adds it to the UI

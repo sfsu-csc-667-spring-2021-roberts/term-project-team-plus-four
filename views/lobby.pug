@@ -2,7 +2,7 @@ extends layout
 
 block content
   .back-btn
-    button#backButton.btn.btn-light.grey-btn(onclick="dashboard()")
+    button#backButton.btn.btn-light.grey-btn(onclick="window.location.href = '/dashboard'")
       img(src='../content/svg/back-arrow.svg' alt="back arrow button")
   h1.header New Game
   .new-game-flex-box
@@ -73,9 +73,7 @@ block content
     });
 
     /*===End chat sockets===*/
-    function dashboard() {
-      window.location.href = "/dashboard"
-    }
+    
     function copytext() {
       /* Get the text field */
       var copyText = document.getElementById("private-code");

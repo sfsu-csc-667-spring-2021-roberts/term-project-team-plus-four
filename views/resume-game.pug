@@ -2,26 +2,11 @@ extends layout
 
 block content
   .back-btn
-    button.btn.btn-light.grey-btn(onclick="dashboard()")
+    button.btn.btn-light.grey-btn(onclick="window.location.href = '/dashboard'")
       img(src='../content/svg/back-arrow.svg')
   h1.header Resume Game
   .resume-game-flex-box
     h5 Current Games
-    //- active game information + delete button
     .active-game 
-      .game-info
-        button.btn.btn-light.grey-btn
-          p.game-code 3F45T23
-          p.num-players 4-Players
-          p.date Feburary 02, 2021
-      .right
-        button.btn.btn-light.grey-btn
-          img(src='../content/svg/trash.svg')
-    footer.footer
-      img#copyright(src='../content/svg/copyright.svg')  
-      span  2021 Classic Uno
-  //- TODO:: move to its own JS File
-  script.
-    function dashboard() {
-      window.location.href = "/dashboard"
-    }
+      //- all active game information + delete button added here
+  script(src='/scripts/resume-game.js' type='module')

@@ -16,7 +16,7 @@ block content
             //- game code added here 
     .header-container 
         .back-game-btn
-            button#backButton.btn.btn-light.grey-btn(onclick='dashboard()')                
+            button#backButton.btn.btn-light.grey-btn(onclick="window.location.href = '/dashboard'")                
                 img(src='../content/svg/back-arrow.svg')
         .chat-button
             button(type="button" class="btn btn-dark uno-btn" id="game-chat-btn" data-toggle="modal" data-target="#gameChatBtn") Game Chat
@@ -49,10 +49,6 @@ block content
                 
     script(src='/scripts/game.js' type='module')
     script io();
-    script.
-        function dashboard() {
-            window.location.href = '/dashboard'
-        } 
         
         
 

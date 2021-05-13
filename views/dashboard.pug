@@ -4,27 +4,13 @@ block content
   img.header-img(src="../content/svg/uno-favicon.svg")
   h1.header Let's Play Classic UNO
   .dashboard-flex-box
-    button.btn.btn-dark.uno-btn(onclick="lobby()") Start New Game
-    button.btn.btn-dark.uno-btn(onclick="resume()") Resume Game
-    button.btn.btn-dark.uno-btn(onclick="join()") Join Game
-    button.btn.btn-dark.uno-btn(onclick="signout()") Sign Out
+    button.btn.btn-dark.uno-btn(onclick="window.location.href = '/lobby'") Start New Game
+    button.btn.btn-dark.uno-btn(onclick="window.location.href = '/resume-game'") Resume Game
+    button.btn.btn-dark.uno-btn(onclick="window.location.href = '/join-game'") Join Game
+    button.btn.btn-dark.uno-btn(onclick="window.location.href = '/'") Sign Out
   footer.footer
     img#copyright(src='../content/svg/copyright.svg')  
     span  2021 Classic Uno
-  //- TODO:: move to its own JS File
-  script.
-    function lobby(){
-      window.location.href = "/lobby"
-    }
-    function resume(){
-      window.location.href = "/resume-game"
-    }
-    function join(){
-      window.location.href = "/join-game"
-    }
-    function signout(){
-      window.location.href = "/"
-    }
 
 
   

@@ -2,7 +2,7 @@ extends layout
 
 block content
   .back-btn
-      button#backButton.btn.btn-light.grey-btn(onclick="dashboard()")
+      button#backButton.btn.btn-light.grey-btn(onclick="window.location.href = '/dashboard'")
         img(src='../content/svg/back-arrow.svg')
   h1.header Join Game
   form.needs-validation.auth-form.mx-auto.join-game
@@ -13,8 +13,3 @@ block content
   footer.footer
       img#copyright(src='../content/svg/copyright.svg')  
       span  2021 Classic Uno
-  //- TODO:: move to its own JS File
-  script.
-    function dashboard() {
-      window.location.href = "/dashboard"
-    }
