@@ -1,9 +1,9 @@
 /**
  * Holds functions for database calls
- * 
+ *
  */
- var express = require('express');
- var db = require("./index.js");
+var express = require('express');
+var db = require("./index.js");
 
 
 const findById = (id) => {
@@ -18,19 +18,19 @@ const findEmail = (email) => {
     return db.one('SELECT * FROM users_ver2 WHERE email=$1', [email]);
 }
 
-//Function add user to db 
-const addUser = (email, password, firstname, lastname) =>{
-     return db.one('INSERT INTO users_ver2 ("email", "password", "firstname", "lastname") VALUES ($1, $2, $3, $4)', [email, password, firstname, lastname]);    
+//Function add user to db
+const addUser = (email, password, firstname, lastname) => {
+    return db.any('INSERT INTO users_ver2 ("email", "password", "firstname", "lastname") VALUES ($1, $2, $3, $4)', [email, password, firstname, lastname]);
 }
 
 //Removes user from db
 const deleteUser = (username) => {
-  
+
 }
 
 //Create new game in db
 const createNewGame = () => {
-  
+
 }
 
 //Get game
@@ -40,7 +40,7 @@ const getGame = (gameCode) => {
 
 //Get list of games
 const getAllGames = () => {
-  return db.one('SELECT * FROM games');
+    return db.one('SELECT * FROM games');
 }
 
 //Delete a game
@@ -53,4 +53,4 @@ const addUserToGame = (gameId, userId) => {
 
 }
 
-module.exports = {findById, addUser, getUser, findEmail};
+module.exports = { findById, addUser, getUser, findEmail };
