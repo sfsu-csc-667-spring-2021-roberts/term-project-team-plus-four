@@ -3,8 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const passport = require("passport");
 const initializePassport = require("../passport/passport-config");
-const addUser = require('../db/dbBackend');
-var db = require("../db");
+const dbFunctions = require('../db/dbBackend');
 
 var users = [];
 
@@ -29,12 +28,12 @@ router.get("/signup", function (req, res, next) {
 router.post("/signup", async function (req, res, next) {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 1);
-    //forced way in I cant get it to work with next line
-    //addUser()
-    db.any('INSERT INTO users_ver2 ("email", "password", "firstname", "lastname") VALUES ($1, $2, $3, $4)', [req.body.email, hashedPassword, req.body.firstname, req.body.lastname]);
+
+    dbFunctions.addUser(req.body.email, hashedPassword, req.body.firstname, req.body.lastname);
+
     console.log("User added to DB");
     users.push({
-      id: Date.now().toString(), 
+      id: Date.now().toString(),
       firstname: req.body.firstname,
       lastname: req.body.lastname,
       email: req.body.email,
@@ -63,23 +62,32 @@ router.post(
 );
 
 /* GET dashboard page. */
-router.get("/dashboard", function (req, res, next) {
+router.get("/dashboard", isAuthenticated, function (req, res, next) {
   res.render("dashboard", { title: "Dashboard | Classic Uno" });
 });
 
 /* GET new game (lobby) page. */
-router.get("/lobby", function (req, res, next) {
+router.get("/lobby", isAuthenticated, function (req, res, next) {
   res.render("lobby", { title: "Lobby | Classic Uno" });
 });
 
 /* GET resume game page. */
-router.get("/resume-game", function (req, res, next) {
+router.get("/resume-game", isAuthenticated, function (req, res, next) {
   res.render("resume-game", { title: "Resume Game | Classic Uno" });
 });
 
 /* GET join game page. */
-router.get("/join-game", function (req, res, next) {
+router.get("/join-game", isAuthenticated, function (req, res, next) {
   res.render("join-game", { title: "Join Game | Classic Uno" });
 });
+
+
+function isAuthenticated(req, res, next) {
+
+  if (req.isAuthenticated())
+    return next();
+
+  res.redirect('/signin');
+}
 
 module.exports = router;
