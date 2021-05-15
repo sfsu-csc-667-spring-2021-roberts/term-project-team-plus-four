@@ -1,36 +1,47 @@
 /**
  * Holds functions for database calls
- * 
  */
- var express = require('express');
  var db = require("./index.js");
 
-
 const findById = (id) => {
-    return db.one('SELECT id, email, firstname, lastname FROM users_ver2 WHERE id=$1', [id]);
+    return db.one('SELECT id, email, firstname, lastname FROM users_ver2 WHERE id=$1',
+     [id]);
 }
 
-const getUser = (firstname) => {
-    return db.one('SELECT firstname FROM users_ver2 WHERE firstname=$1', [firstname]);
+const getIdByEmail = (email) => {
+    return db.one('SELECT id FROM user_ver2 WHERE email=$1',
+     [email]);
+}
+
+const getFirstNameByID = (id) => {
+    return db.one('SELECT firstname FROM user_ver2 WHERE id=$1',
+     [id]);
+}
+
+const getUserName = (firstname) => {
+    return db.one('SELECT firstname FROM users_ver2 WHERE firstname=$1',
+     [firstname]);
 }
 
 const findEmail = (email) => {
     return db.one('SELECT * FROM users_ver2 WHERE email=$1', [email]);
 }
 
-//Function add user to db 
 const addUser = (email, password, firstname, lastname) =>{
-     return db.one('INSERT INTO users_ver2 ("email", "password", "firstname", "lastname") VALUES ($1, $2, $3, $4)', [email, password, firstname, lastname]);    
+    return db.one('INSERT INTO users_ver2 (email, password, firstname, lastname) VALUES ($1, $2, $3, $4) RETURNING id, email, firstname, lastname',
+     [email, password, firstname, lastname]);    
 }
 
-//Removes user from db
-const deleteUser = (username) => {
-  
-}
 
 //Create new game in db
-const createNewGame = () => {
-  
+const createNewGame = (name, userId, isHost) => {
+    db
+        .one('INSERT INTO games (user_id, game_id, isHost, currentPlayer_id');
+}
+
+//Join game
+const joinGame = (game_id) =>{
+    db.one(/*get the specific room number if available..*/);
 }
 
 //Get game
@@ -53,4 +64,6 @@ const addUserToGame = (gameId, userId) => {
 
 }
 
-module.exports = {findById, addUser, getUser, findEmail};
+const testing = (message) => {console.log(message)}
+
+module.exports = {findById, addUser, getUserName, findEmail, testing};
