@@ -6,6 +6,24 @@
  *
  */
 
+//Chat
+ const socket = io();
+ socket.emit('chatter', 'USERNAME has joined the lobby'); 
+ 
+ //Grabs the form
+ $('form').submit(function() {
+   const name = $('#name').val();
+   const message = $('#message').val();
+ socket.emit('chatter', `${name} : ${message}`);
+   $('#message').val('');
+   return false;
+ });
+
+ //show the message
+ socket.on('chatter', function(message) {
+   $('#chat-messages').append($('<li>').text(message));
+ });
+
 let chosenPublicGameCode; // game player chooses to join
 let publicGames; // amount of public games
 // TODO: Fill players object with players in current game
