@@ -30,7 +30,7 @@ const deleteUser = (username) => {
 
 //Create new game in db
 const createNewGame = (gameCode) => {
-    db.any('INSERT INTO games ("id") VALUES ($1)', [gameCode]);
+    db.any('INSERT INTO games ("id", "hasStarted", "direction") VALUES ($1, $2, $3)', [gameCode, false, true]);
 }
 
 //Get game
@@ -53,4 +53,18 @@ const addUserToGame = (gameId, userId) => {
     db.any('INSERT INTO games_users ("user_id, game_id") VALUES ($1, $2)', [userId, gameId]);
 }
 
-module.exports = { findById, addUser, getUser, findEmail, createNewGame };
+const uniqueGameCode = () => {
+    let chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+    let codeLength = 10;
+    let code = "";
+    for (let i = 0; i < codeLength; i++) {
+      var num = Math.floor(Math.random() * chars.length);
+      code += chars.substring(num, num + 1);
+    }
+    // TODO: Check with public games if this code is in use
+    // if (code in DB)
+    //     return uniqueGameCode();
+    return code;
+  };
+
+module.exports = { findById, addUser, getUser, findEmail, createNewGame, uniqueGameCode };
