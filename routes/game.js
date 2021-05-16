@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 // render PUG template for game
-router.get("/:id", isAuthenticated, (req, res, next) => {
+router.get("/:id", /*isAuthenticated,*/ (req, res, next) => {
   res.render("game", { title: "Game | Classic Uno", id: req.params.id });
 });
 

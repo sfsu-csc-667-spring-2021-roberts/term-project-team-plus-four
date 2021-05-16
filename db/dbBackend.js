@@ -29,8 +29,8 @@ const deleteUser = (username) => {
 }
 
 //Create new game in db
-const createNewGame = () => {
-
+const createNewGame = (gameCode) => {
+    db.any('INSERT INTO games ("id") VALUES ($1)', [gameCode]);
 }
 
 //Get game
@@ -45,12 +45,12 @@ const getAllGames = () => {
 
 //Delete a game
 const deleteGame = (gameCode) => {
-
+    db.one('DELETE FROM games WHERE id=$1', [gameCode]);
 }
 
 //Add user and game to games_users
 const addUserToGame = (gameId, userId) => {
-
+    db.any('INSERT INTO games_users ("user_id, game_id") VALUES ($1, $2)', [userId, gameId]);
 }
 
-module.exports = { findById, addUser, getUser, findEmail };
+module.exports = { findById, addUser, getUser, findEmail, createNewGame };

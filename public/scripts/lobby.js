@@ -205,3 +205,8 @@ for (let i = 0; i < privatePlayers.length; i++) {
 for (let i = 0; i < 10; i++) {
   publicGameCard(uniqueGameCode(), i);
 }
+
+/**
+ * Get list of all created games
+ * Need game code, and number of players in game
+ */

@@ -62,22 +62,22 @@ router.post(
 );
 
 /* GET dashboard page. */
-router.get("/dashboard", isAuthenticated, function (req, res, next) {
+router.get("/dashboard", /*isAuthenticated,*/ function (req, res, next) {
   res.render("dashboard", { title: "Dashboard | Classic Uno" });
 });
 
 /* GET new game (lobby) page. */
-router.get("/lobby", isAuthenticated, function (req, res, next) {
+router.get("/lobby", /*isAuthenticated,,*/ function (req, res, next) {
   res.render("lobby", { title: "Lobby | Classic Uno" });
 });
 
 /* GET resume game page. */
-router.get("/resume-game", isAuthenticated, function (req, res, next) {
+router.get("/resume-game", /*isAuthenticated,,*/ function (req, res, next) {
   res.render("resume-game", { title: "Resume Game | Classic Uno" });
 });
 
 /* GET join game page. */
-router.get("/join-game", isAuthenticated, function (req, res, next) {
+router.get("/join-game", /*isAuthenticated,,*/ function (req, res, next) {
   res.render("join-game", { title: "Join Game | Classic Uno" });
 });
 
