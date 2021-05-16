@@ -63,7 +63,9 @@ router.post(
 
 /* GET dashboard page. */
 router.get("/dashboard", /*isAuthenticated,*/ function (req, res, next) {
+  //let createGame = dbFunctions.createNewGame(lobbyFunctions.uniqueGameCode());
   res.render("dashboard", { title: "Dashboard | Classic Uno" });
+  //res.render("dashboard", createGame);
 });
 
 /* GET new game (lobby) page. */
