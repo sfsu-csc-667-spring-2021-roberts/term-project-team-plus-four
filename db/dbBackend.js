@@ -27,9 +27,10 @@ const addUser = (email, password, firstname, lastname) =>{
 
 
 //===== games ======\\
-const createNewGame = (name, userId, isHost) => {
-    db
-        .one('INSERT INTO games (user_id, game_id, isHost, currentPlayer_id');
+const createNewGame = () => {
+    alert("Adding to Database");
+    // db
+    //     .one('INSERT INTO games (user_id, game_id, isHost, currentPlayer_id');
 }
 
 
@@ -57,4 +58,4 @@ const addUserToGame = (gameId, userId) => {
 
 }
 
-module.exports = {findById, addUser, findByEmail, getIdByEmail};
+module.exports = {findById, addUser, findByEmail, getIdByEmail, createNewGame};
