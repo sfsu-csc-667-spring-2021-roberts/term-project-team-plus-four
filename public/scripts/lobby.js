@@ -3,10 +3,9 @@
  * Location: This js file is included as a script within /views/lobby.pug
  * Purpose: Anything that has to do with Game Play DOM manipulation (for dynamic like rendering)
  * and communication with DB is done here
- *
  */
 
-//Chat
+//===== Chat =======\\
  const socket = io();
  socket.emit('chatter', 'USERNAME has joined the lobby'); 
  
@@ -27,6 +26,7 @@
 let chosenPublicGameCode; // game player chooses to join
 let publicGames; // amount of public games
 // TODO: Fill players object with players in current game
+
 let privatePlayers = [
   {
     id: 0,
@@ -199,7 +199,10 @@ document.getElementById("public-game-btn").addEventListener("click", (e) => {
 document.getElementById("private-game-btn").addEventListener("click", (e) => {
   let code = document.getElementById("private-code");
   if (code == null) alert('Click on "Generate Private Code" button first');
-  else window.location.href = `/game/${code.value}`;
+  else 
+  
+  alert("BingBong! add to databse and post to lobby");
+  window.location.href = `/game/${code.value}`;
 });
 
 /**
@@ -220,6 +223,9 @@ for (let i = 0; i < privatePlayers.length; i++) {
 
 //TODO: Grab the public games from the DB and make public game cards from them
 // below code is currently temporary to showcase the cards being made
+
+// get the count of number of active games in the games table...
+// grab and give the data
 for (let i = 0; i < 10; i++) {
   publicGameCard(uniqueGameCode(), i);
 }
