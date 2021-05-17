@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const passport = require("passport");
 const initializePassport = require("../passport/passport-config");
 
-const dbFunctions = require('../db/dbBackend');
+const dbFunctions = require("../db/dbBackend");
 
 var users = [];
 
@@ -27,13 +27,16 @@ router.get("/signup", function (req, res, next) {
 
 /* POST signup page. */
 router.post("/signup", async function (req, res, next) {
-  
   try {
-    const {email, firstname, lastname } = req.body;
+    const { email, firstname, lastname } = req.body;
     const hashedPassword = await bcrypt.hash(req.body.password, 1);
 
-
-    dbFunctions.addUser(req.body.email, hashedPassword, req.body.firstname, req.body.lastname);
+    dbFunctions.addUser(
+      req.body.email,
+      hashedPassword,
+      req.body.firstname,
+      req.body.lastname
+    );
 
     console.log("User added to DB");
     users.push({
@@ -48,7 +51,6 @@ router.post("/signup", async function (req, res, next) {
     res.redirect("/signup");
   }
 
-  
   console.log(users);
 });
 
@@ -58,17 +60,18 @@ router.get("/signin", function (req, res, next) {
 });
 
 /**  POST Sign in, Authenticated using passport JF**/
-router.post("/signin", function (req, res, next) {
-  var id = backend.getIdByEmail(req.body.email);
-  console.log(typeof id);
-  next()
+router.post(
+  "/signin",
+  function (req, res, next) {
+    var id = dbFunctions.getIdByEmail(req.body.email);
+    console.log(typeof id);
+    next();
   },
   passport.authenticate("local", {
     successRedirect: `/dashboard`,
     failureRedirect: "/signin",
     failureFlash: true, //show message
-  }),
-  
+  })
 );
 
 /* GET dashboard page. */
@@ -82,12 +85,12 @@ router.get("/lobby", isAuthenticated, function (req, res, next) {
 });
 
 //===== Post used for creating public game ======\
-router.post("/lobby", function (req,res,next) {
+router.post("/lobby", function (req, res, next) {
   const code = req.body.key;
   const host = req.body.isHost;
   console.log(code);
   console.log(host);
-})
+});
 
 /* GET resume game page. */
 router.get("/resume-game", isAuthenticated, function (req, res, next) {
@@ -99,14 +102,10 @@ router.get("/join-game", isAuthenticated, function (req, res, next) {
   res.render("join-game", { title: "Join Game | Classic Uno" });
 });
 
-
 function isAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) return next();
 
-  if (req.isAuthenticated())
-    return next();
-
-  res.redirect('/signin');
+  res.redirect("/signin");
 }
-
 
 module.exports = router;

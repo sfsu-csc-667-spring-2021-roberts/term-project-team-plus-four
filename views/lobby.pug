@@ -10,21 +10,11 @@ block content
     .public-games
       h4.subheader Public Games
       //- h6.public-game-total 25 Public Games:
-      div#all-public-games
+      .public-box#all-public-games
         //- Public games go here
-      button.btn.btn-primary.uno-btn.lobby-btn#public-create-btn Create Public Game
-      button.btn.btn-dark.uno-btn.lobby-btn#public-game-btn Join Public Game
-    //- Private Match Section
-    .private-game 
-      h4.subheader Private Game
-      h6 Share This Code With Friends:
-      //- .code is replaced with unique game code when clicked
-      .code#generate-code
-        p#generate-code-p Generate Private Code
-      h6 Players Within Private Game: 
-      ol#private-players
-        //- players who entered into private game added here
-      button.btn.btn-dark.uno-btn.lobby-btn#private-game-btn Start Private Game
+      .flex-box-button
+        button.btn.btn-primary.uno-btn.lobby-btn#public-create-btn Create Game
+        button.btn.btn-dark.uno-btn.lobby-btn#public-game-btn Join Game
     
     //- Lobby Chat Section
     .chat 

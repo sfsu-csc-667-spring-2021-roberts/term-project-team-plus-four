@@ -68,6 +68,15 @@
   width: 80%;
 }
 
+.flex-box-button {
+  display: flex;
+  padding: 0 1rem;
+}
+
+.flex-box-button button {
+  margin: 0 1rem;
+}
+
 .game-info button {
   display: flex;
   width: 100%;
@@ -569,7 +578,7 @@
   margin-bottom: 5px;
 }
 
-.public-games div {
+.public-games .public-box {
   height: 53vh;
   margin: 0 1rem 1rem 1rem;
   background-color: #eee;
@@ -577,7 +586,7 @@
   overflow-y: scroll;
 }
 
-.public-games div button:focus {
+.public-games .public-box button:focus {
   background-color: #2b2b2b !important;
   color: #fff !important;
 }

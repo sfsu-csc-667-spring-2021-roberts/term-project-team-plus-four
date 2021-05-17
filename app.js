@@ -7,6 +7,9 @@ const passport = require("passport");
 const flash = require("express-flash");
 const session = require("express-session");
 
+var app = express();
+const http = require("http").Server(app);
+
 //  loads the environment variables defined in .env
 if (process.env.NODE_ENV === "development") {
   require("dotenv").config();
@@ -15,8 +18,6 @@ if (process.env.NODE_ENV === "development") {
 const indexRouter = require("./routes/index");
 const gameRouter = require("./routes/game");
 const testRouter = require("./routes/tests");
-
-var app = express();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
