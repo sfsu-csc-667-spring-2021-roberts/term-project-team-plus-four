@@ -1,3 +1,9 @@
+
+/**
+ * Holds functions for database calls
+ *
+ */
+var express = require('express');
 var db = require("./index.js");
 
 //===== users_ver2 =====\
@@ -20,9 +26,15 @@ const findByEmail = (email) => {
     return db.one('SELECT * FROM users_ver2 WHERE email=$1', [email]);
 }
 
-const addUser = (email, password, firstname, lastname) =>{
-    return db.one('INSERT INTO users_ver2 (email, password, firstname, lastname) VALUES ($1, $2, $3, $4) RETURNING id, email, firstname, lastname',
-     [email, password, firstname, lastname]);    
+
+//Function add user to db
+const addUser = (email, password, firstname, lastname) => {
+    return db.any('INSERT INTO users_ver2 ("email", "password", "firstname", "lastname") VALUES ($1, $2, $3, $4)', [email, password, firstname, lastname]);
+}
+
+//Removes user from db
+const deleteUser = (username) => {
+
 }
 
 
@@ -31,6 +43,7 @@ const createNewGame = () => {
     alert("Adding to Database");
     // db
     //     .one('INSERT INTO games (user_id, game_id, isHost, currentPlayer_id');
+
 }
 
 
@@ -45,7 +58,7 @@ const getGame = (gameCode) => {
 
 
 const getAllGames = () => {
-  return db.one('SELECT * FROM games');
+    return db.one('SELECT * FROM games');
 }
 
 //Delete a game

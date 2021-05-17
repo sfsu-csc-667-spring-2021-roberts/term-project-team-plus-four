@@ -3,7 +3,9 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const passport = require("passport");
 const initializePassport = require("../passport/passport-config");
-var backend = require('../db/dbBackend');
+
+const dbFunctions = require('../db/dbBackend');
+
 var users = [];
 
 /* Passport-Local */
@@ -29,10 +31,13 @@ router.post("/signup", async function (req, res, next) {
   try {
     const {email, firstname, lastname } = req.body;
     const hashedPassword = await bcrypt.hash(req.body.password, 1);
-    backend.addUser(email, hashedPassword, firstname, lastname);
-    
+
+
+    dbFunctions.addUser(req.body.email, hashedPassword, req.body.firstname, req.body.lastname);
+
+    console.log("User added to DB");
     users.push({
-      id: Date.now().toString(), 
+      id: Date.now().toString(),
       firstname: req.body.firstname,
       lastname: req.body.lastname,
       email: req.body.email,
@@ -67,14 +72,13 @@ router.post("/signin", function (req, res, next) {
 );
 
 /* GET dashboard page. */
-router.get("/dashboard", function (req, res, next) {
-  console.log(req.params.testing);
+router.get("/dashboard", isAuthenticated, function (req, res, next) {
   res.render("dashboard", { title: "Dashboard | Classic Uno" });
 });
 
 /* GET new game (lobby) page. */
-router.get("/lobby", function (req, res, next) {
-  res.render("lobby", { title: "Lobby | Classic Uno"});
+router.get("/lobby", isAuthenticated, function (req, res, next) {
+  res.render("lobby", { title: "Lobby | Classic Uno" });
 });
 
 //===== Post used for creating public game ======\
@@ -86,15 +90,23 @@ router.post("/lobby", function (req,res,next) {
 })
 
 /* GET resume game page. */
-router.get("/resume-game", function (req, res, next) {
+router.get("/resume-game", isAuthenticated, function (req, res, next) {
   res.render("resume-game", { title: "Resume Game | Classic Uno" });
 });
 
 /* GET join game page. */
-router.get("/join-game", function (req, res, next) {
+router.get("/join-game", isAuthenticated, function (req, res, next) {
   res.render("join-game", { title: "Join Game | Classic Uno" });
 });
 
+
+function isAuthenticated(req, res, next) {
+
+  if (req.isAuthenticated())
+    return next();
+
+  res.redirect('/signin');
+}
 
 
 module.exports = router;
