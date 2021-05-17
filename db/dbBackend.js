@@ -1,3 +1,4 @@
+
 /**
  * Holds functions for database calls
  *
@@ -5,18 +6,26 @@
 var express = require('express');
 var db = require("./index.js");
 
-
+//===== users_ver2 =====\
 const findById = (id) => {
-    return db.one('SELECT id, email, firstname, lastname FROM users_ver2 WHERE id=$1', [id]);
+    return db.one('SELECT id, email, firstname, lastname FROM users_ver2 WHERE id=$1',
+     [id]);
 }
 
-const getUser = (firstname) => {
-    return db.one('SELECT firstname FROM users_ver2 WHERE firstname=$1', [firstname]);
+const getIdByEmail = (email) => {
+    db.one('SELECT id FROM users_ver2 WHERE email=$1', [email])
+    .then(rows => {
+        console.log(rows)
+    })
+    .catch(error => {
+        console.log(error)
+    })
 }
 
-const findEmail = (email) => {
+const findByEmail = (email) => {
     return db.one('SELECT * FROM users_ver2 WHERE email=$1', [email]);
 }
+
 
 //Function add user to db
 const addUser = (email, password, firstname, lastname) => {
@@ -28,17 +37,26 @@ const deleteUser = (username) => {
 
 }
 
-//Create new game in db
+
+//===== games ======\\
 const createNewGame = () => {
+    alert("Adding to Database");
+    // db
+    //     .one('INSERT INTO games (user_id, game_id, isHost, currentPlayer_id');
 
 }
 
-//Get game
+
+const joinGame = (game_id) =>{
+    db.one(/*get the specific room number if available..*/);
+}
+
+
 const getGame = (gameCode) => {
     return db.one('SELECT id FROM games WHERE id=$1', [gameCode]);
 }
 
-//Get list of games
+
 const getAllGames = () => {
     return db.one('SELECT * FROM games');
 }
@@ -53,4 +71,4 @@ const addUserToGame = (gameId, userId) => {
 
 }
 
-module.exports = { findById, addUser, getUser, findEmail };
+module.exports = {findById, addUser, findByEmail, getIdByEmail, createNewGame};

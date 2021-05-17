@@ -3,12 +3,31 @@
  * Location: This js file is included as a script within /views/lobby.pug
  * Purpose: Anything that has to do with Game Play DOM manipulation (for dynamic like rendering)
  * and communication with DB is done here
- *
  */
+
+//===== Chat =======\\
+ const socket = io();
+ socket.emit('chatter', 'USERNAME has joined the lobby'); 
+ 
+ //Grabs the form
+ $('form').submit(function() {
+   const name = $('#name').val();
+   const message = $('#message').val();
+ socket.emit('chatter', `${name} : ${message}`);
+   $('#message').val('');
+   return false;
+ });
+
+ //show the message
+ socket.on('chatter', function(message) {
+   $('#chat-messages').append($('<li>').text(message));
+ });
 
 let chosenPublicGameCode; // game player chooses to join
 let publicGames; // amount of public games
 // TODO: Fill players object with players in current game
+
+
 let privatePlayers = [
   {
     id: 0,
@@ -40,8 +59,8 @@ let privatePlayers = [
  * @return the unique code
  */
 const uniqueGameCode = () => {
-  let chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
-  let codeLength = 10;
+  let chars = "0123456789";
+  let codeLength = 5;
   let code = "";
   for (let i = 0; i < codeLength; i++) {
     var num = Math.floor(Math.random() * chars.length);
@@ -50,6 +69,7 @@ const uniqueGameCode = () => {
   // TODO: Check with public games if this code is in use
   // if (code in DB)
   //     return uniqueGameCode();
+
   return code;
 };
 
@@ -178,6 +198,8 @@ document.getElementById("public-game-btn").addEventListener("click", (e) => {
 /**
  * Purpose: waits for user to click on start private button
  */
+
+
 document.getElementById("private-game-btn").addEventListener("click", (e) => {
   let code = document.getElementById("private-code");
   if (code == null) alert('Click on "Generate Private Code" button first');
@@ -195,6 +217,38 @@ const publicGamesListener = (code) => {
   });
 };
 
+//======== Use to Post to any route/path so we can update the DB data here like the code =========\\
+function createGame (path, params, method="POST") {
+  const form = document.createElement("form");
+  form.method = method;
+  form.action = path;
+
+  for (const key in params){
+    if(params.hasOwnProperty(key)) {
+      const hiddenField = document.createElement("input");
+      hiddenField.type = "hidden";
+      hiddenField.name = key;
+      hiddenField.value = params[key];
+      form.appendChild(hiddenField);
+    }
+  }
+  document.body.appendChild(form);
+  form.submit();
+}
+
+function testing(){
+  console.log("What are you doing here?");
+}
+
+//========= Creating Public Game =========\\
+document.getElementById("public-create-btn").addEventListener("click", (e) => {
+  let code = document.getElementById("private-code").value; //need only the value must change type to int for DB 
+  if (code == null) alert('Click on "Generate Private Code" button first');
+  else 
+  createGame("/lobby", {key: `${code}`, isHost: true});
+  testing();
+});
+
 // TODO: Socket for people entering the private game?
 for (let i = 0; i < privatePlayers.length; i++) {
   privatePlayer(privatePlayers[i].name);
@@ -202,6 +256,11 @@ for (let i = 0; i < privatePlayers.length; i++) {
 
 //TODO: Grab the public games from the DB and make public game cards from them
 // below code is currently temporary to showcase the cards being made
+
+// get the count of number of active games in the games table...
+// grab and give the data
+
+//Next step is preparing the game creating agame first 
 for (let i = 0; i < 10; i++) {
   publicGameCard(uniqueGameCode(), i);
 }

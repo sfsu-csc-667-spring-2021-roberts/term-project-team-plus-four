@@ -12,6 +12,7 @@ block content
       //- h6.public-game-total 25 Public Games:
       div#all-public-games
         //- Public games go here
+      button.btn.btn-primary.uno-btn.lobby-btn#public-create-btn Create Public Game
       button.btn.btn-dark.uno-btn.lobby-btn#public-game-btn Join Public Game
     //- Private Match Section
     .private-game 
@@ -45,21 +46,3 @@ block content
 
   //- TODO:: move to its own JS File 
   script(src='/scripts/lobby.js' type='module')
-  script.
-    /*===Chat sockets===*/
-    const socket = io();
-    socket.emit('chatter', 'USERNAME has joined the lobby'); 
-    
-    //Grabs the form
-    $('form').submit(function() {
-      const name = $('#name').val();
-      const message = $('#message').val();
-    socket.emit('chatter', `${name} : ${message}`);
-      $('#message').val('');
-      return false;
-    });
-
-    //show the message
-    socket.on('chatter', function(message) {
-      $('#chat-messages').append($('<li>').text(message));
-    });
