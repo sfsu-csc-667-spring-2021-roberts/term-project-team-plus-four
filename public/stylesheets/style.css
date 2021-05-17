@@ -570,7 +570,7 @@
 }
 
 .public-games div {
-  height: 50vh;
+  height: 53vh;
   margin: 0 1rem 1rem 1rem;
   background-color: #eee;
   border-radius: 10px;
@@ -597,6 +597,18 @@
 }
 
 /* Private Game Code */
+
+#generate-code p {
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 600;
+}
+
+#generate-code:hover {
+  background-color: rgb(219, 219, 219) !important;
+  cursor: pointer;
+}
+
 .code {
   display: flex;
   width: 80%;
@@ -644,6 +656,7 @@
   border-radius: 10px;
   height: 36vh;
   background-color: #eee;
+  overflow-y: scroll;
 }
 
 .private-game li {

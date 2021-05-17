@@ -13,7 +13,7 @@ let code;
  * Purpose: Updates unique code variable every time user changes input
  */
 document.getElementById("code").addEventListener("change", (e) => {
-  code = e.target.value.toUpperCase();
+  code = e.target.value;
   console.log("[DEBUG] code: " + code);
 });
 

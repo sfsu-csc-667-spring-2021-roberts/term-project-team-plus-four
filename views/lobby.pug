@@ -9,30 +9,21 @@ block content
     //- Public Game(s) Section
     .public-games
       h4.subheader Public Games
-      h6 25 Public Games:
-      div
-        - for (var x = 0; x < 25; x++)
-          //- Game Information for public games
-          .game-info
-            button.btn.btn-light.grey-btn
-              p.game-code Code: 3F45T23
-              p.num-players 1 Player(s) Needed
-      button.btn.btn-dark.uno-btn.lobby-btn Join Game
+      //- h6.public-game-total 25 Public Games:
+      div#all-public-games
+        //- Public games go here
+      button.btn.btn-dark.uno-btn.lobby-btn#public-game-btn Join Public Game
     //- Private Match Section
     .private-game 
       h4.subheader Private Game
       h6 Share This Code With Friends:
-      .code
-        p Code: 
-        input(type="text" value="3F45T23" id="private-code" disabled) 
-        button.uno-btn(onclick='copytext()')
-          img(src="../content/svg/clipboard.svg", alt="copy to clipboard button")
+      //- .code is replaced with unique game code when clicked
+      .code#generate-code
+        p#generate-code-p Generate Private Code
       h6 Players Within Private Game: 
-      ol 
-        - for (var x = 0; x < 4; x++)
-          li 
-            span Jose Gonzalez
-      button.btn.btn-dark.uno-btn.lobby-btn Start Game
+      ol#private-players
+        //- players who entered into private game added here
+      button.btn.btn-dark.uno-btn.lobby-btn#private-game-btn Start Private Game
     
     //- Lobby Chat Section
     .chat 
@@ -53,6 +44,7 @@ block content
                       input(type='submit', class='button is-success', value='Post')
 
   //- TODO:: move to its own JS File 
+  script(src='/scripts/lobby.js' type='module')
   script.
     /*===Chat sockets===*/
     const socket = io();
@@ -71,20 +63,3 @@ block content
     socket.on('chatter', function(message) {
       $('#chat-messages').append($('<li>').text(message));
     });
-
-    /*===End chat sockets===*/
-    
-    function copytext() {
-      /* Get the text field */
-      var copyText = document.getElementById("private-code");
-
-      /* Select the text field */
-      copyText.select();
-      copyText.setSelectionRange(0, 99999); /* For mobile devices */
-
-      /* Copy the text inside the text field */
-      document.execCommand("copy");
-
-      /* Alert the copied text */
-      alert("Copied Private Game Code: " + copyText.value);
-    }
