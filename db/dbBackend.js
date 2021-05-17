@@ -16,6 +16,7 @@ const getIdByEmail = (email) => {
     db.one('SELECT id FROM users_ver2 WHERE email=$1', [email])
     .then(rows => {
         console.log(rows)
+        return rows;
     })
     .catch(error => {
         console.log(error)
@@ -38,12 +39,23 @@ const deleteUser = (username) => {
 }
 
 
+<<<<<<< Updated upstream
 //===== games ======\\
 const createNewGame = () => {
     alert("Adding to Database");
     // db
     //     .one('INSERT INTO games (user_id, game_id, isHost, currentPlayer_id');
 
+<<<<<<< Updated upstream
+=======
+=======
+//========== Public Games ===========\\
+const createNewGame = (game_id) => {
+    db
+        .one('INSERT INTO games_users_ver2 (game_id, is_host) VALUES ($1, true) RETURNING game_id',
+            [game_id]);
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 }
 
 

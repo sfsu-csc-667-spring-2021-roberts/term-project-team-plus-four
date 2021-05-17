@@ -240,13 +240,14 @@ function testing(){
   console.log("What are you doing here?");
 }
 
-//========= Creating Public Game =========\\
+//========= Click Create Public Game =========\\
 document.getElementById("public-create-btn").addEventListener("click", (e) => {
   let code = document.getElementById("private-code").value; //need only the value must change type to int for DB 
   if (code == null) alert('Click on "Generate Private Code" button first');
+  
   else 
-  createGame("/lobby", {key: `${code}`, isHost: true});
-  testing();
+    createGame("/lobby", {key: `${code}`, isHost: true});
+    testing();
 });
 
 // TODO: Socket for people entering the private game?

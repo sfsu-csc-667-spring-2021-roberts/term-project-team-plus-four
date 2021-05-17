@@ -8,26 +8,33 @@ const dbFunctions = require('../db/dbBackend');
 
 var users = [];
 
-/* Passport-Local */
+//====== Passport-Local ======\\
 initializePassport(
   passport,
   (email) => users.find((user) => user.email === email),
   (id) => users.find((user) => user.id === id)
 );
 
-/* GET home page. */
+//===== GET home page.=====\\
 router.get("/", function (req, res, next) {
   res.render("index", { title: "Classic Uno" });
 });
 
-/* GET signup page. */
+//===== GET signup page.=====\\
 router.get("/signup", function (req, res, next) {
   res.render("signup", { title: "Signup | Classic Uno" });
 });
 
-/* POST signup page. */
+
+//==== Promise ====\\
+const load = new Promise((resolve, reject) => {
+  setTimeout(()=>{
+    resolve('foo');
+  }, 300);
+})
+
+//========== POST signup page. ==========\\
 router.post("/signup", async function (req, res, next) {
-  
   try {
     const {email, firstname, lastname } = req.body;
     const hashedPassword = await bcrypt.hash(req.body.password, 1);
@@ -43,34 +50,37 @@ router.post("/signup", async function (req, res, next) {
       email: req.body.email,
       password: hashedPassword,
     });
-    res.redirect("/signin");
+
+    res.redirect(`/signin`);
   } catch {
     res.redirect("/signup");
   }
-
-  
   console.log(users);
 });
 
-/* GET signin page. JF*/
+//====== GET signin page.======\\
 router.get("/signin", function (req, res, next) {
   res.render("signin", { title: "Signin | Classic Uno" });
 });
 
-/**  POST Sign in, Authenticated using passport JF**/
+//======POST Sign in, Authenticated using passport JF turned off for now.==\\
 router.post("/signin", function (req, res, next) {
-  var id = backend.getIdByEmail(req.body.email);
-  console.log(typeof id);
-  next()
+  const userId = backend.getIdByEmail(req.body.email)
+  console.log('my obj', userId);
+
+  if(userId === null) res.redirect(`/signin`);
+  else res.redirect(`/dashboard/${userId}`);
+  // next()
   },
-  passport.authenticate("local", {
-    successRedirect: `/dashboard`,
-    failureRedirect: "/signin",
-    failureFlash: true, //show message
-  }),
+  // passport.authenticate("local", {
+  //   successRedirect: "/dashboard",
+  //   failureRedirect: "/signin",
+  //   failureFlash: true, //show message
+  // }),
   
 );
 
+<<<<<<< Updated upstream
 /* GET dashboard page. */
 router.get("/dashboard", isAuthenticated, function (req, res, next) {
   res.render("dashboard", { title: "Dashboard | Classic Uno" });
@@ -79,16 +89,32 @@ router.get("/dashboard", isAuthenticated, function (req, res, next) {
 /* GET new game (lobby) page. */
 router.get("/lobby", isAuthenticated, function (req, res, next) {
   res.render("lobby", { title: "Lobby | Classic Uno" });
+<<<<<<< Updated upstream
+=======
+=======
+//===== GET dashboard page. =====\\
+router.get("/dashboard/:id", function (req, res, next) {
+  console.log(req.params.testing);
+  res.render("dashboard", { title: "Dashboard | Classic Uno" });
 });
 
-//===== Post used for creating public game ======\
+//====== GET new game (lobby) page. =======\\
+router.get("/lobby", function (req, res, next) {
+  res.render("lobby", { title: "Lobby | Classic Uno"});
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+});
+
+//=========== Post used for creating public game ===========\
 router.post("/lobby", function (req,res,next) {
   const code = req.body.key;
   const host = req.body.isHost;
+  backend.createNewGame(code);
   console.log(code);
   console.log(host);
 })
 
+<<<<<<< Updated upstream
 /* GET resume game page. */
 router.get("/resume-game", isAuthenticated, function (req, res, next) {
   res.render("resume-game", { title: "Resume Game | Classic Uno" });
@@ -96,6 +122,18 @@ router.get("/resume-game", isAuthenticated, function (req, res, next) {
 
 /* GET join game page. */
 router.get("/join-game", isAuthenticated, function (req, res, next) {
+<<<<<<< Updated upstream
+=======
+=======
+//======= GET resume game page. ======\\
+router.get("/resume-game", function (req, res, next) {
+  res.render("resume-game", { title: "Resume Game | Classic Uno" });
+});
+
+//======== GET join game page. =========\\
+router.get("/join-game", function (req, res, next) {
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
   res.render("join-game", { title: "Join Game | Classic Uno" });
 });
 
