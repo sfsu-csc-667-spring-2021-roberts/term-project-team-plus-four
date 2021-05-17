@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const passport = require("passport");
 const initializePassport = require("../passport/passport-config");
-const dbFunctions = require('../db/dbBackend');
+const dbFunctions = require("../db/dbBackend");
 
 var users = [];
 
@@ -63,9 +63,7 @@ router.post(
 
 /* GET dashboard page. */
 router.get("/dashboard", /*isAuthenticated,*/ function (req, res, next) {
-  let createGame = dbFunctions.createNewGame(dbFunctions.uniqueGameCode());
-  res.render("dashboard", { title: "Dashboard | Classic Uno" });
-  res.render("dashboard", createGame);
+  res.render("dashboard", { title: "Dashboard | Classic Uno"});  
 });
 
 /* GET new game (lobby) page. */
