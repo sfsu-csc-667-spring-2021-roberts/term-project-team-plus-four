@@ -3,7 +3,6 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const passport = require("passport");
 const initializePassport = require("../passport/passport-config");
-
 const dbFunctions = require('../db/dbBackend');
 
 var users = [];
@@ -27,21 +26,18 @@ router.get("/signup", function (req, res, next) {
 
 
 //==== Promise ====\\
-const load = new Promise((resolve, reject) => {
-  setTimeout(()=>{
-    resolve('foo');
-  }, 300);
-})
+// const load = new Promise((resolve, reject) => {
+//   setTimeout(()=>{
+//     resolve('foo');
+//   }, 300);
+// })
 
 //========== POST signup page. ==========\\
 router.post("/signup", async function (req, res, next) {
   try {
     const {email, firstname, lastname } = req.body;
     const hashedPassword = await bcrypt.hash(req.body.password, 1);
-
-
     dbFunctions.addUser(req.body.email, hashedPassword, req.body.firstname, req.body.lastname);
-
     console.log("User added to DB");
     users.push({
       id: Date.now().toString(),
@@ -80,7 +76,7 @@ router.post("/signin", function (req, res, next) {
   
 );
 
-<<<<<<< Updated upstream
+
 /* GET dashboard page. */
 router.get("/dashboard", isAuthenticated, function (req, res, next) {
   res.render("dashboard", { title: "Dashboard | Classic Uno" });
@@ -89,20 +85,20 @@ router.get("/dashboard", isAuthenticated, function (req, res, next) {
 /* GET new game (lobby) page. */
 router.get("/lobby", isAuthenticated, function (req, res, next) {
   res.render("lobby", { title: "Lobby | Classic Uno" });
-<<<<<<< Updated upstream
-=======
-=======
+});
+
 //===== GET dashboard page. =====\\
 router.get("/dashboard/:id", function (req, res, next) {
+
   console.log(req.params.testing);
   res.render("dashboard", { title: "Dashboard | Classic Uno" });
+
 });
 
 //====== GET new game (lobby) page. =======\\
 router.get("/lobby", function (req, res, next) {
   res.render("lobby", { title: "Lobby | Classic Uno"});
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+
 });
 
 //=========== Post used for creating public game ===========\
@@ -114,36 +110,23 @@ router.post("/lobby", function (req,res,next) {
   console.log(host);
 })
 
-<<<<<<< Updated upstream
-/* GET resume game page. */
+
 router.get("/resume-game", isAuthenticated, function (req, res, next) {
   res.render("resume-game", { title: "Resume Game | Classic Uno" });
 });
 
-/* GET join game page. */
-router.get("/join-game", isAuthenticated, function (req, res, next) {
-<<<<<<< Updated upstream
-=======
-=======
-//======= GET resume game page. ======\\
-router.get("/resume-game", function (req, res, next) {
-  res.render("resume-game", { title: "Resume Game | Classic Uno" });
-});
+// /* GET join game page. */
+// router.get("/join-game", isAuthenticated, function (req, res, next) {
+//   res.render("join-game", { title: "Join Game | Classic Uno" });
+// });
 
-//======== GET join game page. =========\\
-router.get("/join-game", function (req, res, next) {
->>>>>>> Stashed changes
->>>>>>> Stashed changes
-  res.render("join-game", { title: "Join Game | Classic Uno" });
-});
-
-
+// function isAuthenticated(req, res, next) {
 function isAuthenticated(req, res, next) {
-
-  if (req.isAuthenticated())
+//   if (req.isAuthenticated())
+//     return next();
     return next();
-
-  res.redirect('/signin');
+//   res.redirect('/signin');
+// }
 }
 
 
